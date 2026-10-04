@@ -1,0 +1,14 @@
+{
+  "name": "liw-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LIW — LOST IN WIRED: сайт-портфолио независимого веб-разработчика",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "build": "node scripts/build.cjs",
+    "test": "node scripts/test-lead.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

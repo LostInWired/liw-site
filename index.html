@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>__TITLE__</title>
+  <meta name="description" content="__DESCRIPTION__">
+  <link rel="canonical" href="__SITE_URL__/">
+  <meta name="theme-color" content="#09090b">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="LIW — LOST IN WIRED">
+  <meta property="og:title" content="__TITLE__">
+  <meta property="og:description" content="__DESCRIPTION__">
+  <meta property="og:url" content="__SITE_URL__/">
+  <meta property="og:image" content="__SITE_URL__/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="__TITLE__">
+  <meta name="twitter:description" content="__DESCRIPTION__">
+  <meta name="twitter:image" content="__SITE_URL__/og-image.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/config.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main" id="skip-link">Перейти к содержимому</a>
+
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__glow bg__glow--a"></div>
+    <div class="bg__glow bg__glow--b"></div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top">
+        <img class="brand__mark" src="/favicon.svg" alt="" width="36" height="36">
+        <span class="brand__text">
+          <span class="brand__name" data-text="brand.name">LIW</span>
+          <span class="brand__full" data-text="brand.fullName">LOST IN WIRED</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <ul class="nav__list" id="nav-list"></ul>
+      </nav>
+
+      <a class="btn btn--sm header__cta" href="#apply" data-text="texts.navCta">Обсудить проект</a>
+
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" id="top">
+      <div class="container hero__grid">
+        <div class="hero__copy" id="hero-copy"></div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="mock">
+            <svg class="mock__wires" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none">
+              <path class="wire wire--a" d="M8 78 C 24 96, 40 56, 58 70 S 86 92, 96 62" vector-effect="non-scaling-stroke"/>
+              <path class="wire wire--b" d="M4 30 C 18 10, 30 44, 46 24 S 80 4, 98 22" vector-effect="non-scaling-stroke"/>
+              <circle class="node" cx="8" cy="78" r="1.1"/>
+              <circle class="node" cx="96" cy="62" r="1.1"/>
+              <circle class="node node--accent" cx="98" cy="22" r="1.3"/>
+            </svg>
+
+            <div class="browser">
+              <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">yourbusiness.com</span></div>
+              <div class="browser__body">
+                <div class="sk sk--nav"><b></b><span></span><span></span><span></span></div>
+                <div class="sk sk--title"></div>
+                <div class="sk sk--title sk--short"></div>
+                <div class="sk sk--line"></div>
+                <div class="sk sk--line sk--mid"></div>
+                <div class="sk sk--btns"><em></em><em class="ghost"></em></div>
+                <div class="sk sk--cards"><u></u><u></u><u></u></div>
+              </div>
+            </div>
+
+            <div class="phone">
+              <div class="phone__notch"></div>
+              <div class="phone__body">
+                <div class="sk sk--title"></div>
+                <div class="sk sk--title sk--short"></div>
+                <div class="sk sk--line"></div>
+                <div class="sk sk--line sk--mid"></div>
+                <div class="sk sk--btns sk--btns-col"><em></em><em class="ghost"></em></div>
+                <div class="sk sk--block"></div>
+              </div>
+            </div>
+
+            <div class="chip chip--a"><span class="chip__dot"></span>Телефон · Компьютер</div>
+            <div class="chip chip--b"><span class="chip__dot chip__dot--ok"></span>Заявка отправлена</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <ul class="points" id="hero-points"></ul>
+      </div>
+    </section>
+
+    <section class="section" id="services" data-section="services"></section>
+    <section class="section" id="features" data-section="features"></section>
+    <section class="section" id="works" data-section="projects"></section>
+    <section class="section" id="process" data-section="process"></section>
+    <section class="section" id="reviews" data-section="reviews"></section>
+    <section class="section" id="faq" data-section="faq"></section>
+    <section class="section section--apply" id="apply" data-section="form"></section>
+    <section class="section section--contacts" id="contacts" data-section="contacts"></section>
+
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+
+  <noscript>
+    <p class="noscript">Для работы сайта нужен включённый JavaScript.</p>
+  </noscript>
+</body>
+</html>
