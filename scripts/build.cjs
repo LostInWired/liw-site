@@ -20,10 +20,10 @@ const DIST = path.join(ROOT, 'dist');
 
 const PUBLIC_FILES = [
   'index.html', '404.html', 'config.js', 'favicon.svg', 'apple-touch-icon.png',
-  'og-image.png', 'robots.txt', 'sitemap.xml'
+  'og-image.png', 'robots.txt', 'sitemap.xml', 'privacy.html'
 ];
 const PUBLIC_DIRS = ['css', 'js', 'images'];
-const TEXT_TO_PROCESS = ['index.html', '404.html', 'robots.txt', 'sitemap.xml'];
+const TEXT_TO_PROCESS = ['index.html', '404.html', 'privacy.html', 'robots.txt', 'sitemap.xml'];
 
 // Токен бота выглядит как 123456789:AAE... — такого в публичных файлах быть не должно
 const TOKEN_RE = /\b\d{8,10}:[A-Za-z0-9_-]{30,}\b/;

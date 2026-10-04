@@ -571,3 +571,22 @@ a.work:hover, .work:hover { translate: 0 -4px; border-color: color-mix(in srgb, 
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0ms !important; }
   .js-ready .reveal { opacity: 1; transform: none; }
 }
+
+
+/* ---------- Согласие и политика конфиденциальности ---------- */
+.consent { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; }
+.consent__input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); }
+.consent__label { display: block; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+.consent__link, .footer__privacy, .privacy-page a { color: var(--text); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 65%, transparent); text-underline-offset: 3px; }
+.consent__link:hover, .footer__privacy:hover, .privacy-page a:hover { color: var(--accent); }
+.consent__error { margin-top: 5px; }
+.footer__meta { display: flex; flex-direction: column; gap: 4px; }
+.footer__privacy { width: fit-content; font-size: 12.5px; color: var(--muted); }
+.privacy-page { padding: 120px 0 72px; }
+.privacy-page__card { width: min(860px, 100%); padding: clamp(24px, 5vw, 48px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.privacy-page h1 { margin: 8px 0 14px; font-size: clamp(32px, 6vw, 56px); line-height: 1.05; letter-spacing: -.035em; }
+.privacy-page h2 { margin: 30px 0 10px; font-size: 20px; }
+.privacy-page p, .privacy-page li { color: var(--muted); }
+.privacy-page ul { margin: 10px 0 0; padding-left: 20px; list-style: disc; }
+.privacy-page__back { display: inline-flex; margin-bottom: 22px; color: var(--muted); }
+.privacy-page__date { margin-top: 30px; font-size: 13px; }

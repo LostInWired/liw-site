@@ -455,6 +455,18 @@
     var submit = el('button', { class: 'btn btn--primary btn--block', type: 'submit' },
       el('span', { class: 'btn__label', text: str(f.submit) || 'Отправить' }), icon('arrow'));
     var status = el('p', { class: 'form__status', role: 'status', 'aria-live': 'polite' });
+    var consent = el('input', { class: 'consent__input', id: 'f-consent', name: 'consent', type: 'checkbox', required: true });
+    var consentText = str(f.consentLabel) || 'Я согласен на обработку персональных данных и принимаю Политику конфиденциальности.';
+    var policyWords = 'Политику конфиденциальности';
+    var consentLabel = el('label', { class: 'consent__label', for: 'f-consent' });
+    var pos = consentText.indexOf(policyWords);
+    if (pos >= 0) {
+      consentLabel.appendChild(document.createTextNode(consentText.slice(0, pos)));
+      consentLabel.appendChild(el('a', { class: 'consent__link', href: '/privacy.html', target: '_blank', rel: 'noopener', text: policyWords }));
+      consentLabel.appendChild(document.createTextNode(consentText.slice(pos + policyWords.length)));
+    } else consentLabel.appendChild(document.createTextNode(consentText));
+    var consentError = el('p', { class: 'field__error consent__error', id: 'f-consent-err', role: 'alert' });
+    var consentBox = el('div', { class: 'consent' }, consent, el('div', null, consentLabel, consentError));
 
     var form = el('form', { class: 'form', novalidate: true, autocomplete: 'on' },
       field('f-phone', str(fl.phoneLabel), phone, { required: true, error: true }),
@@ -464,7 +476,7 @@
       ),
       field('f-type', str(fl.typeLabel), select),
       field('f-message', str(fl.messageLabel), message),
-      hp, submit, status,
+      hp, consentBox, submit, status,
       str(f.privacyNote) ? el('p', { class: 'form__note', text: f.privacyNote }) : null
     );
 
@@ -506,6 +518,7 @@
     }
 
     phone.addEventListener('input', function () { if (phone.classList.contains('is-invalid')) setError(''); });
+    consent.addEventListener('change', function () { if (consent.checked) consentError.textContent = ''; });
 
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
@@ -516,6 +529,12 @@
         return;
       }
       setError('');
+      if (!consent.checked) {
+        consentError.textContent = str(f.consentError) || 'Подтвердите согласие.';
+        consent.focus();
+        return;
+      }
+      consentError.textContent = '';
 
       var payload = {
         phone: phone.value.trim(),
@@ -647,7 +666,10 @@
         el('span', { class: 'footer__name', text: str(get('brand.name')) }),
         el('span', { class: 'footer__full', text: str(get('brand.fullName')) })
       ),
-      el('p', { class: 'footer__text', text: '© ' + year + ' ' + str(get('brand.name')) + (str(get('texts.footer')) ? ' · ' + C.texts.footer : '') }),
+      el('div', { class: 'footer__meta' },
+        el('p', { class: 'footer__text', text: '© ' + year + ' ' + str(get('brand.name')) + (str(get('texts.footer')) ? ' · ' + C.texts.footer : '') }),
+        el('a', { class: 'footer__privacy', href: '/privacy.html', text: 'Политика конфиденциальности' })
+      ),
       el('a', { class: 'footer__top', href: '#top' }, el('span', { text: str(get('texts.backToTop')) || 'Наверх' }), icon('arrow', 'icon--up'))
     ));
   }
