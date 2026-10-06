@@ -136,7 +136,7 @@ const CONFIG = {
       category: "Веб-сервис для компьютерного клуба",
       description: "Демо-проект сайта компьютерного клуба с выбором ПК, тарифами, онлайн-бронированием и административной панелью.",
       image: "/images/projects/liw-arena.png",
-      url: "https://liw-arena-m6uysxlql-lost-in-wired.vercel.app",
+      url: "https://liw-arena.vercel.app",
       tags: ["Next.js", "Бронирование", "База данных", "Админ-панель"]
     }
   ],
