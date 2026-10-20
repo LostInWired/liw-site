@@ -3,131 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>__TITLE__</title>
-  <meta name="description" content="__DESCRIPTION__">
-  <link rel="canonical" href="__SITE_URL__/">
-  <meta name="theme-color" content="#09090b">
-  <meta name="color-scheme" content="dark">
-
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="LIW — LOST IN WIRED">
-  <meta property="og:title" content="__TITLE__">
-  <meta property="og:description" content="__DESCRIPTION__">
-  <meta property="og:url" content="__SITE_URL__/">
-  <meta property="og:image" content="__SITE_URL__/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="__TITLE__">
-  <meta name="twitter:description" content="__DESCRIPTION__">
-  <meta name="twitter:image" content="__SITE_URL__/og-image.png">
-
+  <title>LIW — сайты, собранные как механизм</title>
+  <meta name="description" content="Сайты для малого бизнеса в Казахстане: готовые шаблоны подешевле или разработка под заказ.">
+  <meta name="theme-color" content="#0b0c10">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="/config.js" defer></script>
-  <script src="/js/app.js" defer></script>
+  <script type="module" src="/src/main.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main" id="skip-link">Перейти к содержимому</a>
+  <a class="skip" href="#order" data-i18n="skip">К заказу</a>
 
-  <div class="bg" aria-hidden="true">
-    <div class="bg__grid"></div>
-    <div class="bg__glow bg__glow--a"></div>
-    <div class="bg__glow bg__glow--b"></div>
-  </div>
-
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a class="brand" href="#top">
-        <img class="brand__mark" src="/favicon.svg" alt="" width="36" height="36">
-        <span class="brand__text">
-          <span class="brand__name" data-text="brand.name">LIW</span>
-          <span class="brand__full" data-text="brand.fullName">LOST IN WIRED</span>
-        </span>
-      </a>
-
-      <nav class="nav" id="nav" aria-label="Основная навигация">
-        <ul class="nav__list" id="nav-list"></ul>
-      </nav>
-
-      <a class="btn btn--sm header__cta" href="#apply" data-text="texts.navCta">Обсудить проект</a>
-
-      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
-        <span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
-
-    <section class="hero" id="top">
-      <div class="container hero__grid">
-        <div class="hero__copy" id="hero-copy"></div>
-
-        <div class="hero__visual" aria-hidden="true">
-          <div class="mock">
-            <svg class="mock__wires" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none">
-              <path class="wire wire--a" d="M8 78 C 24 96, 40 56, 58 70 S 86 92, 96 62" vector-effect="non-scaling-stroke"/>
-              <path class="wire wire--b" d="M4 30 C 18 10, 30 44, 46 24 S 80 4, 98 22" vector-effect="non-scaling-stroke"/>
-              <circle class="node" cx="8" cy="78" r="1.1"/>
-              <circle class="node" cx="96" cy="62" r="1.1"/>
-              <circle class="node node--accent" cx="98" cy="22" r="1.3"/>
-            </svg>
-
-            <div class="browser">
-              <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">yourbusiness.com</span></div>
-              <div class="browser__body">
-                <div class="sk sk--nav"><b></b><span></span><span></span><span></span></div>
-                <div class="sk sk--title"></div>
-                <div class="sk sk--title sk--short"></div>
-                <div class="sk sk--line"></div>
-                <div class="sk sk--line sk--mid"></div>
-                <div class="sk sk--btns"><em></em><em class="ghost"></em></div>
-                <div class="sk sk--cards"><u></u><u></u><u></u></div>
-              </div>
-            </div>
-
-            <div class="phone">
-              <div class="phone__notch"></div>
-              <div class="phone__body">
-                <div class="sk sk--title"></div>
-                <div class="sk sk--title sk--short"></div>
-                <div class="sk sk--line"></div>
-                <div class="sk sk--line sk--mid"></div>
-                <div class="sk sk--btns sk--btns-col"><em></em><em class="ghost"></em></div>
-                <div class="sk sk--block"></div>
-              </div>
-            </div>
-
-            <div class="chip chip--a"><span class="chip__dot"></span>Телефон · Компьютер</div>
-            <div class="chip chip--b"><span class="chip__dot chip__dot--ok"></span>Заявка отправлена</div>
-          </div>
+  <section class="story" id="top">
+    <div class="sticky">
+      <header class="top">
+        <a class="brand" href="#top" aria-label="LIW"><b>LIW</b><span>lost in wired</span></a>
+        <a class="top__cta" href="#order" data-i18n="cta">Заказать сайт</a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" data-lang="kk" aria-pressed="false">ҚАЗ</button>
         </div>
+      </header>
+
+      <canvas class="gl" aria-hidden="true"></canvas>
+
+      <div class="caps">
+        <article class="cap on" data-cap="intro">
+          <p class="eyebrow" data-i18n="intro.k">Сайты для малого бизнеса · Казахстан</p>
+          <h1 data-i18n="intro.t">Сайт — это механизм, а не картинка.</h1>
+          <p data-i18n="intro.b">Покажу, из чего он собран. Листайте вниз.</p>
+        </article>
+        <article class="cap" data-cap="0">
+          <p class="eyebrow">01 · <span data-i18n="c0.k">Кейкапы</span></p>
+          <h2 data-i18n="c0.t">Дизайн</h2>
+          <p data-i18n="c0.b">То, что видит клиент: шрифты, цвет, ощущение. Ради этого вас запоминают.</p>
+        </article>
+        <article class="cap" data-cap="1">
+          <p class="eyebrow">02 · <span data-i18n="c1.k">Переключатели</span></p>
+          <h2 data-i18n="c1.t">Анимация и отклик</h2>
+          <p data-i18n="c1.b">Под каждой клавишей есть переключатель. Под каждой кнопкой на сайте есть отклик, который приятно нажимать.</p>
+        </article>
+        <article class="cap" data-cap="2">
+          <p class="eyebrow">03 · <span data-i18n="c2.k">Плата</span></p>
+          <h2 data-i18n="c2.t">Заявки и запись</h2>
+          <p data-i18n="c2.b">Всё соединяет плата: форма заявки, запись, сообщение вам в Telegram и защита от спама.</p>
+        </article>
+        <article class="cap" data-cap="3">
+          <p class="eyebrow">04 · <span data-i18n="c3.k">Корпус и кабель</span></p>
+          <h2 data-i18n="c3.t">Хостинг, домен, скорость</h2>
+          <p data-i18n="c3.b">Корпус держит всё вместе: быстрый хостинг, собственный адрес, удобство на телефоне.</p>
+        </article>
+        <article class="cap" data-cap="outro">
+          <h2 data-i18n="o.t">Соберу такой же для вашего бизнеса.</h2>
+          <p data-i18n="o.b">Шаблон — быстрее и дешевле. Под заказ — полностью ваш.</p>
+          <a class="btn" href="#order" data-i18n="cta">Заказать сайт</a>
+        </article>
       </div>
 
-      <div class="container">
-        <ul class="points" id="hero-points"></ul>
+      <ol class="rail" aria-hidden="true"><li></li><li></li><li></li><li></li></ol>
+      <p class="scrollhint" aria-hidden="true" data-i18n="hint">листайте</p>
+    </div>
+  </section>
+
+  <section class="works" id="works" aria-labelledby="w-t">
+    <header class="sec-head">
+      <p class="eyebrow" data-i18n="w.k">Работа</p>
+      <h2 id="w-t" data-i18n="w.t">Пример: LIW ARENA</h2>
+    </header>
+    <a class="work" href="https://liw-arena.vercel.app" target="_blank" rel="noopener noreferrer">
+      <img src="/images/liw-arena.webp" alt="" width="1400" height="691" loading="lazy" decoding="async">
+      <div class="work__body">
+        <p data-i18n="w.b">Сайт компьютерного клуба: выбор ПК, тарифы, онлайн-бронирование и админ-панель. Демо-проект.</p>
+        <ul class="tags"><li>Next.js</li><li data-i18n="w.t1">Бронирование</li><li data-i18n="w.t2">База данных</li><li data-i18n="w.t3">Админ-панель</li></ul>
+        <span class="work__go" data-i18n="w.go">Открыть проект →</span>
       </div>
-    </section>
+    </a>
+  </section>
 
-    <section class="section" id="services" data-section="services"></section>
-    <section class="section" id="features" data-section="features"></section>
-    <section class="section" id="works" data-section="projects"></section>
-    <section class="section" id="process" data-section="process"></section>
-    <section class="section" id="reviews" data-section="reviews"></section>
-    <section class="section" id="faq" data-section="faq"></section>
-    <section class="section section--apply" id="apply" data-section="form"></section>
-    <section class="section section--contacts" id="contacts" data-section="contacts"></section>
+  <section class="tpl" id="templates" aria-labelledby="tpl-t">
+    <header class="sec-head">
+      <p class="eyebrow" data-i18n="tpl.k">Шаблоны</p>
+      <h2 id="tpl-t" data-i18n="tpl.t">Выберите нишу — посмотрите свой сайт</h2>
+      <p class="sec-sub" data-i18n="tpl.b">Живые демо</p>
+    </header>
+    <div class="tpl__tabs" role="group" aria-label="Ниша" id="tpl-tabs"></div>
+    <div class="demo" id="demo" data-theme="barber"></div>
+    <div class="tpl__buy">
+      <p><span data-i18n="tpl.from">Шаблон</span> <b data-i18n="tar.a.p">от 35 000 ₸</b> <small data-i18n="tpl.note">Демо-тексты и цены условные.</small></p>
+      <a class="btn" href="#order" id="tpl-order" data-i18n="tpl.order">Заказать этот шаблон</a>
+    </div>
+  </section>
 
-  </main>
+  <section class="tar" id="tariffs" aria-labelledby="tar-t">
+    <header class="sec-head">
+      <p class="eyebrow" data-i18n="tar.k">Тарифы</p>
+      <h2 id="tar-t" data-i18n="tar.t">Два способа получить сайт</h2>
+    </header>
+    <div class="tar__cols">
+      <article class="plan">
+        <h3 data-i18n="tar.a.n">Шаблон</h3>
+        <p class="plan__price" data-i18n="tar.a.p">от 35 000 ₸</p>
+        <p class="plan__d" data-i18n="tar.a.d"></p>
+        <ul><li data-i18n="tar.a.1"></li><li data-i18n="tar.a.2"></li><li data-i18n="tar.a.3"></li><li data-i18n="tar.a.4"></li></ul>
+      </article>
+      <article class="plan plan--alt">
+        <h3 data-i18n="tar.b.n">Под заказ</h3>
+        <p class="plan__price" data-i18n="tar.b.p">от 150 000 ₸</p>
+        <p class="plan__d" data-i18n="tar.b.d"></p>
+        <a class="plan__link" href="#order" data-choice="custom" data-i18n="tar.b.cta">Заказать сайт под заказ</a>
+        <ul><li data-i18n="tar.b.1"></li><li data-i18n="tar.b.2"></li><li data-i18n="tar.b.3"></li><li data-i18n="tar.b.4"></li></ul>
+      </article>
+    </div>
+    <p class="tar__note" data-i18n="tar.note"></p>
+  </section>
 
-  <footer class="footer" id="footer"></footer>
+  <section class="order" id="order" aria-labelledby="ord-t">
+    <p class="eyebrow" data-i18n="ord.k">Заявка</p>
+    <h2 id="ord-t" data-i18n="ord.t">Оставьте заявку</h2>
+    <p class="sec-sub" data-i18n="ord.b"></p>
+    <form class="lead" id="lead-form" novalidate>
+      <label class="f"><span data-i18n="f.name">Имя</span>
+        <input name="name" type="text" autocomplete="name" maxlength="80" required></label>
+      <label class="f"><span data-i18n="f.phone">Телефон или WhatsApp</span>
+        <input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="+7 ___ ___ __ __" required></label>
+      <label class="f"><span data-i18n="f.choice">Что хотите</span>
+        <select name="choice" id="choice">
+          <option value="barber"></option><option value="pc"></option><option value="dental"></option><option value="coffee"></option><option value="custom"></option>
+        </select></label>
+      <label class="f f--hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+      <label class="check"><input name="consent" type="checkbox" required>
+        <span><span data-i18n="f.consent">Согласен на обработку имени и номера для связи по заявке.</span> <a href="/privacy.html" data-i18n="priv">Политика конфиденциальности</a></span></label>
+      <button class="btn" type="submit" data-i18n="f.send">Отправить заявку</button>
+      <p class="lead__status" id="lead-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
 
-  <noscript>
-    <p class="noscript">Для работы сайта нужен включённый JavaScript.</p>
-  </noscript>
+  <footer class="foot">
+    <span>© LIW · lost in wired</span>
+    <a href="/privacy.html" data-i18n="priv">Политика конфиденциальности</a>
+  </footer>
 </body>
 </html>

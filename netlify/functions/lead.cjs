@@ -1,30 +1,33 @@
 /* ==========================================================================
-   LIW — LOST IN WIRED · netlify/functions/lead.js
-   Принимает заявку с сайта и отправляет ОДНО сообщение в Telegram.
-
-   Секреты берутся только из переменных окружения Netlify:
+   LIW v3 · netlify/functions/lead.cjs
+   Принимает заявку (имя, телефон, выбор шаблона/своего сайта) и отправляет
+   ОДНО сообщение в Telegram. Секреты — только в переменных окружения Netlify:
      TG_TOKEN    — токен бота от @BotFather
-     TG_CHAT_ID  — ваш chat id (куда присылать заявки)
-   Необязательные:
-     BRAND_NAME      — подпись в сообщении (по умолчанию "LIW")
-     LEAD_TIMEZONE   — часовой пояс для даты (по умолчанию "Asia/Almaty")
+     TG_CHAT_ID  — ваш chat id
+   Необязательные: BRAND_NAME, LEAD_TIMEZONE (по умолчанию Asia/Almaty)
 
-   Защита: проверка метода/типа/размера, same-origin, honeypot, rate limit,
-   валидация и очистка всех полей, лимиты длины, экранирование для Telegram.
+   Защита: метод/тип/размер, same-origin, honeypot, лимит запросов с IP,
+   белый список выбора, согласие обязательно, очистка и экранирование.
    ========================================================================== */
 'use strict';
 
-const LIMITS = { phone: 30, name: 80, business: 120, type: 60, message: 1500 };
-const MAX_BODY_CHARS = 10000;
-const RATE_WINDOW_MS = 10 * 60 * 1000; // окно 10 минут
-const RATE_MAX = 5;                    // не больше 5 заявок с одного IP за окно
+const LIMITS = { phone: 30, name: 80 };
+const MAX_BODY_CHARS = 2000;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
 const TELEGRAM_TIMEOUT_MS = 8000;
 
-// Память живёт, пока «тёплый» экземпляр функции. Это базовая защита от простого спама;
-// для жёсткой защиты используйте Netlify Rate Limiting / Cloudflare перед сайтом.
+const CHOICES = {
+  barber: 'Шаблон: барбершоп',
+  pc: 'Шаблон: ПК-клуб',
+  dental: 'Шаблон: стоматология',
+  coffee: 'Шаблон: кофейня',
+  custom: 'Собственный сайт (под заказ)'
+};
+
+// Память живёт, пока «тёплый» экземпляр функции: базовая защита от простого спама.
 const hits = new Map();
 
-/* ---------- Утилиты ---------- */
 function json(statusCode, body, extraHeaders) {
   return {
     statusCode,
@@ -68,28 +71,22 @@ function rateLimited(ip, now) {
   return false;
 }
 
-// Очистка пользовательского текста: убираем управляющие и невидимые символы, режем длину
-function clean(value, max, multiline) {
+// Убираем управляющие и невидимые символы, схлопываем пробелы, режем длину
+function clean(value, max) {
   if (typeof value !== 'string') return '';
-  let s = value
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+  return value
+    .replace(/[\u0000-\u001F\u007F]/g, ' ')
     .replace(/[​-‏‪-‮⁠-⁩﻿]/g, '')
-    .replace(/\r\n?/g, '\n');
-  if (multiline) {
-    s = s.replace(/[ \t]+/g, ' ').replace(/ ?\n ?/g, '\n').replace(/\n{3,}/g, '\n\n');
-  } else {
-    s = s.replace(/\s+/g, ' ');
-  }
-  return s.trim().slice(0, max);
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, max);
 }
 
 function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function phoneDigits(phone) {
-  return phone.replace(/\D/g, '');
-}
+const phoneDigits = (phone) => phone.replace(/\D/g, '');
 
 function validPhone(phone) {
   const d = phoneDigits(phone);
@@ -124,26 +121,14 @@ function formatDate(date) {
 
 function buildMessage(lead, date) {
   const brand = escapeHtml(clean(process.env.BRAND_NAME || 'LIW', 40) || 'LIW');
-  const parts = [];
-
-  parts.push(`<b>НОВАЯ ЗАЯВКА — ${brand}</b>`);
-  parts.push(`<b>Тип:</b> ${escapeHtml(lead.type || 'Не указан')}`);
-
-  const who = [];
-  if (lead.name) who.push(`<b>Имя:</b> ${escapeHtml(lead.name)}`);
-  if (lead.business) who.push(`<b>Бизнес:</b> ${escapeHtml(lead.business)}`);
-  if (who.length) parts.push(who.join('\n'));
-
   const wa = whatsappLink(lead.phone);
-  parts.push(
-    `<b>WhatsApp / телефон:</b>\n${escapeHtml(formatPhone(lead.phone))}` +
-    (wa ? `\n<a href="${wa}">Открыть чат в WhatsApp</a>` : '')
-  );
-
-  if (lead.message) parts.push(`<b>Описание:</b>\n${escapeHtml(lead.message)}`);
-  parts.push(`<b>Дата:</b>\n${formatDate(date)}`);
-
-  return parts.join('\n\n');
+  return [
+    `<b>НОВАЯ ЗАЯВКА — ${brand}</b>`,
+    `<b>Что выбрал:</b> ${escapeHtml(lead.choiceLabel)}`,
+    `<b>Имя:</b> ${escapeHtml(lead.name)}`,
+    `<b>Телефон / WhatsApp:</b>\n${escapeHtml(formatPhone(lead.phone))}` + (wa ? `\n<a href="${wa}">Открыть чат в WhatsApp</a>` : ''),
+    `<b>Дата:</b> ${formatDate(date)}`
+  ].join('\n\n');
 }
 
 function sameOrigin(event) {
@@ -163,12 +148,7 @@ async function sendToTelegram(token, chatId, text) {
     const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-        parse_mode: 'HTML',
-        disable_web_page_preview: true
-      }),
+      body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', disable_web_page_preview: true }),
       signal: ctrl.signal
     });
     return res.ok;
@@ -177,51 +157,38 @@ async function sendToTelegram(token, chatId, text) {
   }
 }
 
-/* ---------- Обработчик ---------- */
 exports.handler = async function handler(event) {
   try {
-    if (event.httpMethod !== 'POST') {
-      return json(405, { ok: false, error: 'method_not_allowed' }, { Allow: 'POST' });
-    }
-    if (!sameOrigin(event)) {
-      return json(403, { ok: false, error: 'forbidden' });
-    }
-    if (!/application\/json/i.test(header(event, 'content-type'))) {
-      return json(415, { ok: false, error: 'unsupported_media_type' });
-    }
+    if (event.httpMethod !== 'POST') return json(405, { ok: false, error: 'method_not_allowed' }, { Allow: 'POST' });
+    if (!sameOrigin(event)) return json(403, { ok: false, error: 'forbidden' });
+    if (!/application\/json/i.test(header(event, 'content-type'))) return json(415, { ok: false, error: 'unsupported_media_type' });
 
     let raw = event.body || '';
     if (event.isBase64Encoded) raw = Buffer.from(raw, 'base64').toString('utf8');
-    if (raw.length > MAX_BODY_CHARS) {
-      return json(413, { ok: false, error: 'payload_too_large' });
-    }
+    if (raw.length > MAX_BODY_CHARS) return json(413, { ok: false, error: 'payload_too_large' });
 
     let data;
     try { data = JSON.parse(raw); } catch (e) { data = null; }
-    if (!data || typeof data !== 'object' || Array.isArray(data)) {
-      return json(400, { ok: false, error: 'bad_request' });
-    }
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return json(400, { ok: false, error: 'bad_request' });
 
     // Honeypot: бот заполнил скрытое поле — делаем вид, что всё хорошо, но ничего не отправляем
-    if (typeof data.website === 'string' && data.website.trim() !== '') {
-      return json(200, { ok: true });
-    }
+    if (typeof data.website === 'string' && data.website.trim() !== '') return json(200, { ok: true });
 
     if (rateLimited(clientIp(event), Date.now())) {
       return json(429, { ok: false, error: 'too_many_requests' }, { 'Retry-After': '600' });
     }
 
+    const choice = typeof data.choice === 'string' && Object.prototype.hasOwnProperty.call(CHOICES, data.choice) ? data.choice : '';
     const lead = {
-      phone: clean(data.phone, LIMITS.phone),
       name: clean(data.name, LIMITS.name),
-      business: clean(data.business, LIMITS.business),
-      type: clean(data.type, LIMITS.type),
-      message: clean(data.message, LIMITS.message, true)
+      phone: clean(data.phone, LIMITS.phone),
+      choiceLabel: CHOICES[choice] || ''
     };
 
-    if (!validPhone(lead.phone)) {
-      return json(400, { ok: false, error: 'invalid_phone', field: 'phone' });
-    }
+    if (!lead.name) return json(400, { ok: false, error: 'invalid_name', field: 'name' });
+    if (!validPhone(lead.phone)) return json(400, { ok: false, error: 'invalid_phone', field: 'phone' });
+    if (!lead.choiceLabel) return json(400, { ok: false, error: 'invalid_choice', field: 'choice' });
+    if (data.consent !== true) return json(400, { ok: false, error: 'consent_required', field: 'consent' });
 
     const token = process.env.TG_TOKEN;
     const chatId = process.env.TG_CHAT_ID;
@@ -235,10 +202,9 @@ exports.handler = async function handler(event) {
       console.error('lead: Telegram API вернул ошибку');
       return json(502, { ok: false, error: 'delivery_failed' });
     }
-
     return json(200, { ok: true });
   } catch (err) {
-    // В лог пишем только тип ошибки — без токенов и без пользовательских данных
+    // В лог пишем только тип ошибки: без токенов и без данных пользователя
     console.error('lead: непредвиденная ошибка:', err && err.name ? err.name : 'Error');
     return json(500, { ok: false, error: 'internal_error' });
   }

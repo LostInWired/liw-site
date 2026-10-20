@@ -1,14 +1,23 @@
 {
-  "name": "liw-site",
-  "version": "1.0.0",
+  "name": "liw-site-v3",
   "private": true,
-  "description": "LIW — LOST IN WIRED: сайт-портфолио независимого веб-разработчика",
+  "version": "1.0.0",
+  "description": "LIW — витрина с 3D-клавиатурой, которая разбирается на слои",
+  "type": "module",
   "scripts": {
-    "start": "python3 -m http.server 8000",
-    "build": "node scripts/build.cjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "node scripts/test-lead.cjs"
   },
-  "engines": {
-    "node": ">=18"
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/literata": "^5.3.0",
+    "@fontsource-variable/unbounded": "^5.3.0",
+    "gsap": "^3.15.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.4"
   }
 }

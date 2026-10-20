@@ -1,0 +1,14 @@
+:root { --bg:#0b0c10; --ink:#eceef5; --muted:#8b90a2; --accent:#8ea2ff; --line:#262a38; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace; }
+    main { max-width: 720px; margin: 0 auto; padding: 28px 20px 80px; }
+    nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:48px; font-size:13px; }
+    a { color: var(--accent); }
+    .lang button { background:none; border:1px solid var(--line); color:var(--muted); padding:6px 10px; font:inherit; cursor:pointer; }
+    .lang button[aria-pressed="true"] { background:var(--ink); color:var(--bg); }
+    h1 { font:700 clamp(26px,6vw,40px)/1.1 system-ui,sans-serif; letter-spacing:-.02em; margin:0 0 8px; }
+    h2 { font:600 15px system-ui,sans-serif; color:var(--accent); margin:36px 0 8px; letter-spacing:.04em; text-transform:uppercase; }
+    p, li { color:#c9ccd8; } ul { padding-left: 20px; }
+    .muted { color: var(--muted); font-size: 13px; }
+    [data-l] { display:none; } html[lang="ru"] [data-l="ru"], html[lang="kk"] [data-l="kk"] { display:block; }
+    html[lang="ru"] li[data-l="ru"], html[lang="kk"] li[data-l="kk"] { display:list-item; }
