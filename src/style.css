@@ -215,6 +215,9 @@ button.seat:hover { background: color-mix(in srgb, var(--d-acc) 45%, transparent
 .lead__status { min-height: 1.5em; font-size: 14px; }
 .lead__status[data-state="ok"] { color: #7fe3a5; }
 .lead__status[data-state="err"] { color: #ff9a9a; }
+.direct { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 14px; }
+.direct a, .foot__links a { color: var(--accent); border-bottom: 1px solid currentColor; }
+.foot__links { display: flex; gap: 16px; }
 .plan__link { display: inline-block; margin-top: 16px; color: var(--accent); font-size: 13px; letter-spacing: .04em; border-bottom: 1px solid currentColor; }
 
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; max-width: 1240px; margin: 0 auto; padding: 24px var(--gutter) 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }

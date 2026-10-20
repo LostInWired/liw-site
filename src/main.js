@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '@fontsource-variable/literata/wght.css';
 import { dict } from './i18n.js';
 import { niches, nicheOrder } from './niches.js';
+import { WHATSAPP, WHATSAPP_DISPLAY, INSTAGRAM } from './contacts.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,6 +174,14 @@ function applyLang(l) {
   const t = dict[lang];
   document.documentElement.lang = lang;
   renderTemplates();
+  document.querySelectorAll('[data-wa]').forEach((a) => {
+    a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t['wa.msg'])}`;
+    a.textContent = `WhatsApp ${WHATSAPP_DISPLAY}`;
+  });
+  document.querySelectorAll('[data-ig]').forEach((a) => {
+    a.hidden = !INSTAGRAM;
+    if (INSTAGRAM) a.href = `https://instagram.com/${INSTAGRAM}`;
+  });
   document.querySelectorAll('#choice option').forEach((o) => { o.textContent = t['o.' + o.value]; });
   document.querySelectorAll('[data-i18n]').forEach((el) => { if (t[el.dataset.i18n]) el.textContent = t[el.dataset.i18n]; });
   document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
