@@ -10,6 +10,13 @@ import { WHATSAPP, WHATSAPP_DISPLAY, INSTAGRAM } from './contacts.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// режим страницы определяем до подстановки текстов: без движения / телефон (CSS-слои) / десктоп (WebGL)
+const root = document.documentElement;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = window.matchMedia('(max-width: 760px)').matches;
+if (reduce) root.classList.add('no3d');
+else if (phone) root.classList.add('m-layers');
+
 // ---------- шаблоны ----------
 let lang = 'ru';
 let niche = 'barber';
@@ -183,7 +190,7 @@ function applyLang(l) {
     if (INSTAGRAM) a.href = `https://instagram.com/${INSTAGRAM}`;
   });
   document.querySelectorAll('#choice option').forEach((o) => { o.textContent = t['o.' + o.value]; });
-  document.querySelectorAll('[data-i18n]').forEach((el) => { if (t[el.dataset.i18n]) el.textContent = t[el.dataset.i18n]; });
+  document.querySelectorAll('[data-i18n]').forEach((el) => { const k = el.dataset.i18n; const v = (root.classList.contains('m-layers') && t['p.' + k]) || t[k]; if (v) el.textContent = v; });
   document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   try { localStorage.setItem('liw-lang', lang); } catch { /* ignore */ }
 }
@@ -196,19 +203,27 @@ applyLang(saved);
 function webglOk() {
   try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; }
 }
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lowEnd = (navigator.deviceMemory && navigator.deviceMemory <= 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2);
 
-if (!webglOk() || reduce || lowEnd) {
-  document.documentElement.classList.add('no3d');
+if (root.classList.contains('no3d')) {
+  // без анимации: обычная страница
+} else if (phone) {
+  init();
+} else if (!webglOk() || lowEnd) {
+  root.classList.add('no3d');
 } else {
   init();
 }
 
 async function init() {
-  const { createScene } = await import('./scene.js');
-  const canvas = document.querySelector('.gl');
-  const gl = createScene(canvas);
+  // на телефоне вместо WebGL — лёгкие CSS-слои (three.js даже не загружается)
+  let gl;
+  if (phone) {
+    gl = (await import('./layers.js')).createLayers();
+  } else {
+    const { createScene } = await import('./scene.js');
+    gl = createScene(document.querySelector('.gl'));
+  }
   const caps = [...document.querySelectorAll('.cap')];
   const dots = [...document.querySelectorAll('.rail li')];
   const hint = document.querySelector('.scrollhint');
