@@ -3,167 +3,190 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LIW — сайты, собранные как механизм</title>
-  <meta name="description" content="Сайты для малого бизнеса в Казахстане: готовые шаблоны подешевле или разработка под заказ.">
+  <title>LIW — сайт для вашего бизнеса за 3–5 дней, от 25 000 ₸</title>
+  <meta name="description" content="Сайты для малого бизнеса в Казахстане: онлайн-запись, заявки в Telegram, WhatsApp, русский и казахский. Сначала бесплатный макет, потом решаете.">
+  <link rel="canonical" href="https://liw-site.netlify.app/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="LIW — lost in wired">
-  <meta property="og:title" content="LIW — сайты, собранные как механизм">
-  <meta property="og:description" content="Сайты для малого бизнеса в Казахстане: готовые шаблоны подешевле или разработка под заказ.">
+  <meta property="og:title" content="LIW — сайт для вашего бизнеса за 3–5 дней, от 25 000 ₸">
+  <meta property="og:description" content="Онлайн-запись, заявки в Telegram, WhatsApp, русский и казахский. Сначала бесплатный макет, потом решаете.">
   <meta property="og:image" content="https://liw-site.netlify.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://liw-site.netlify.app/og-image.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"LIW — lost in wired","description":"Разработка сайтов для малого бизнеса в Казахстане","url":"https://liw-site.netlify.app/","areaServed":{"@type":"Country","name":"Kazakhstan"},"priceRange":"от 25 000 ₸"}</script>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>
-  <a class="skip" href="#order" data-i18n="skip">К заказу</a>
+  <a class="skip" href="#order" data-i18n="skip">К заявке</a>
 
-  <section class="story" id="top">
-    <div class="sticky">
-      <header class="top">
-        <a class="brand" href="#top" aria-label="LIW"><b>LIW</b><span>lost in wired</span></a>
-        <a class="top__cta" href="#order" data-i18n="cta">Заказать сайт</a>
-        <div class="lang" role="group" aria-label="Language">
-          <button type="button" data-lang="ru" aria-pressed="true">RU</button>
-          <button type="button" data-lang="kk" aria-pressed="false">ҚАЗ</button>
+  <header class="top" id="top">
+    <a class="brand" href="#top" aria-label="LIW"><b>LIW</b><span>lost in wired</span></a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#demo-block" data-i18n="nav.demo">Примеры</a>
+      <a href="#how" data-i18n="nav.how">Как это работает</a>
+      <a href="#tariffs" data-i18n="nav.price">Цены</a>
+      <a href="#faq" data-i18n="nav.faq">Вопросы</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang="kk" aria-pressed="false">ҚАЗ</button>
+    </div>
+    <a class="top__wa" data-wa target="_blank" rel="noopener noreferrer"><span data-i18n="wa.short">WhatsApp</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <svg class="hero__wire" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 470 C180 470 200 190 430 215 S760 470 980 330 S1160 150 1230 190"/><path class="b" d="M-20 120 C140 90 260 300 470 290 S820 90 1230 330"/></svg>
+
+      <div class="hero__copy">
+        <p class="eyebrow" data-i18n="intro.k">Сайты для малого бизнеса · Казахстан</p>
+        <h1 data-i18n="intro.t">Сайт, который приводит клиентов. За 3–5 дней.</h1>
+        <p class="hero__lead" data-i18n="intro.b">Онлайн-запись, заявки в Telegram и кнопка WhatsApp. Сначала покажу макет вашего сайта бесплатно, потом решаете.</p>
+        <div class="hero__cta">
+          <a class="btn btn--hot" data-wa target="_blank" rel="noopener noreferrer"><span data-i18n="cta.wa">Написать в WhatsApp</span></a>
+          <a class="btn btn--ghost" href="#demo-block" data-i18n="cta.demo">Смотреть примеры ↓</a>
         </div>
+        <ul class="chips">
+          <li data-i18n="chip.1">от 25 000 ₸</li>
+          <li data-i18n="chip.2">Макет бесплатно</li>
+          <li data-i18n="chip.3">RU + ҚАЗ</li>
+          <li data-i18n="chip.4">Заявки в Telegram</li>
+        </ul>
+      </div>
+
+      <div class="hero__demo" id="demo-block">
+        <p class="demo__lbl" data-i18n="tpl.t">Выберите нишу и посмотрите свой сайт</p>
+        <div class="tpl__tabs" role="group" aria-label="Ниша" id="tpl-tabs"></div>
+        <div class="demo" id="demo" data-theme="barber"></div>
+        <div class="tpl__buy">
+          <p><span data-i18n="tpl.from">Шаблон</span> <b data-i18n="tar.a.p">от 25 000 ₸</b> <small data-i18n="tpl.note">Демо-тексты и цены условные. Название, цены и фото заменим на ваши.</small></p>
+          <a class="btn btn--hot" id="tpl-wa" target="_blank" rel="noopener noreferrer"><span data-i18n="tpl.order">Хочу такой сайт</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="how rv" id="how" aria-labelledby="how-t">
+      <header class="sec-head">
+        <p class="eyebrow" data-i18n="how.k">Как это работает</p>
+        <h2 id="how-t" data-i18n="how.t">Три шага. Рисковать нечем.</h2>
       </header>
+      <ol class="steps3">
+        <li><span class="n">01</span><h3 data-i18n="how.1t">Пишете в WhatsApp</h3><p data-i18n="how.1b">Название и чем занимаетесь. Двух строк достаточно.</p></li>
+        <li><span class="n">02</span><h3 data-i18n="how.2t">Смотрите макет</h3><p data-i18n="how.2b">Через 1–2 дня вы видите свой сайт с вашим названием и ценами. Это бесплатно.</p></li>
+        <li><span class="n">03</span><h3 data-i18n="how.3t">Запуск</h3><p data-i18n="how.3b">Правки, домен, хостинг, заявки в Telegram. Через 3–5 дней сайт в сети.</p></li>
+      </ol>
+    </section>
 
-      <canvas class="gl" aria-hidden="true"></canvas>
-      <div class="iso" aria-hidden="true">
-        <div class="stack">
-          <div class="lay lay--host">
-            <svg viewBox="0 0 280 196" preserveAspectRatio="none"><path class="wire" d="M0 150 C60 150 62 60 132 72 S226 142 280 92"/><path class="wire wire--b" d="M0 40 C50 30 80 120 150 118 S240 60 280 70"/><circle cx="132" cy="72" r="4"/><circle cx="280" cy="92" r="4"/></svg>
-          </div>
-          <div class="lay lay--form"><i class="bar b1"></i><i class="bar b2"></i><i class="bar b3"></i><i class="pill"></i><i class="bell"></i></div>
-          <div class="lay lay--motion"><i class="ring r1"></i><i class="ring r2"></i><i class="orb"></i></div>
-          <div class="lay lay--design"><i class="nav"></i><i class="t1"></i><i class="t2"></i><i class="img"></i><i class="c1"></i><i class="c2"></i><i class="c3"></i></div>
+    <section class="why rv" aria-labelledby="why-t">
+      <header class="sec-head">
+        <p class="eyebrow" data-i18n="why.k">Что вы получаете</p>
+        <h2 id="why-t" data-i18n="why.t">Сайт работает, пока вы заняты делом.</h2>
+      </header>
+      <ul class="why__grid">
+        <li><h3 data-i18n="why.1t">Клиенты записываются сами</h3><p data-i18n="why.1b">Запись, бронь или заявка в пару касаний, без звонков и долгой переписки.</p></li>
+        <li><h3 data-i18n="why.2t">Заявки сразу вам в Telegram</h3><p data-i18n="why.2b">Сообщение приходит мгновенно. Рядом всегда кнопка WhatsApp.</p></li>
+        <li><h3 data-i18n="why.3t">Удобно с телефона</h3><p data-i18n="why.3b">Большинство клиентов открывают сайт на телефоне. Сайт сделан сначала под него.</p></li>
+        <li><h3 data-i18n="why.4t">На русском и казахском</h3><p data-i18n="why.4b">Переключатель языка на сайте. Клиент читает на том языке, на котором ему удобно.</p></li>
+      </ul>
+    </section>
+
+    <section class="tar rv" id="tariffs" aria-labelledby="tar-t">
+      <header class="sec-head">
+        <p class="eyebrow" data-i18n="tar.k">Цены</p>
+        <h2 id="tar-t" data-i18n="tar.t">Два способа получить сайт</h2>
+      </header>
+      <div class="tar__cols">
+        <article class="plan plan--main">
+          <p class="plan__tag" data-i18n="tar.a.tag">Чаще всего берут</p>
+          <h3 data-i18n="tar.a.n">Шаблон</h3>
+          <p class="plan__price" data-i18n="tar.a.p">от 25 000 ₸</p>
+          <p class="plan__d" data-i18n="tar.a.d"></p>
+          <ul><li data-i18n="tar.a.1"></li><li data-i18n="tar.a.2"></li><li data-i18n="tar.a.3"></li><li data-i18n="tar.a.4"></li></ul>
+          <a class="btn btn--hot" data-wa target="_blank" rel="noopener noreferrer"><span data-i18n="cta.wa">Написать в WhatsApp</span></a>
+        </article>
+        <article class="plan plan--alt">
+          <h3 data-i18n="tar.b.n">Под заказ</h3>
+          <p class="plan__price" data-i18n="tar.b.p">от 50 000 ₸</p>
+          <p class="plan__d" data-i18n="tar.b.d"></p>
+          <ul><li data-i18n="tar.b.1"></li><li data-i18n="tar.b.2"></li><li data-i18n="tar.b.3"></li><li data-i18n="tar.b.4"></li></ul>
+          <a class="btn btn--ghost" href="#order" data-choice="custom" data-i18n="tar.b.cta">Обсудить проект</a>
+        </article>
+      </div>
+      <p class="tar__note" data-i18n="tar.note"></p>
+    </section>
+
+    <section class="works rv" id="works" aria-labelledby="w-t">
+      <header class="sec-head">
+        <p class="eyebrow" data-i18n="w.k">Работа</p>
+        <h2 id="w-t" data-i18n="w.t">Пример: LIW ARENA</h2>
+      </header>
+      <a class="work" href="https://liw-arena.vercel.app" target="_blank" rel="noopener noreferrer">
+        <img src="/images/liw-arena.webp" alt="" width="1400" height="691" loading="lazy" decoding="async">
+        <div class="work__body">
+          <p data-i18n="w.b">Сайт компьютерного клуба: выбор ПК, тарифы, онлайн-бронирование и админ-панель. Демо-проект.</p>
+          <ul class="tags"><li>Next.js</li><li data-i18n="w.t1">Бронирование</li><li data-i18n="w.t2">База данных</li><li data-i18n="w.t3">Админ-панель</li></ul>
+          <span class="work__go" data-i18n="w.go">Открыть проект →</span>
         </div>
+      </a>
+    </section>
+
+    <section class="faq rv" id="faq" aria-labelledby="faq-t">
+      <header class="sec-head">
+        <p class="eyebrow" data-i18n="faq.k">Вопросы</p>
+        <h2 id="faq-t" data-i18n="faq.t">Частые вопросы</h2>
+      </header>
+      <div class="faq__list">
+        <details><summary data-i18n="faq.1q">Сколько это занимает по времени?</summary><p data-i18n="faq.1a">Шаблон: 3–5 дней после согласования макета. Сайт под заказ: сроки обсуждаем сразу.</p></details>
+        <details><summary data-i18n="faq.2q">Что нужно от меня?</summary><p data-i18n="faq.2a">Название, список услуг с ценами, контакты и фото, если есть. Нет фото или текстов? Напишите в WhatsApp, подскажу.</p></details>
+        <details><summary data-i18n="faq.3q">А домен и хостинг?</summary><p data-i18n="faq.3a">Подключу ваш домен или помогу выбрать новый. Все расходы назову заранее, до начала работы.</p></details>
+        <details><summary data-i18n="faq.4q">Куда приходят заявки?</summary><p data-i18n="faq.4a">Мгновенно вам в Telegram. Клиент также может написать в WhatsApp прямо с сайта.</p></details>
+        <details><summary data-i18n="faq.5q">Если макет не понравится?</summary><p data-i18n="faq.5a">Тогда мы ничего не платим и расстаёмся. Макет бесплатный.</p></details>
       </div>
+    </section>
 
-
-      <div class="caps">
-        <article class="cap on" data-cap="intro">
-          <p class="eyebrow" data-i18n="intro.k">Сайты для малого бизнеса · Казахстан</p>
-          <h1 data-i18n="intro.t">Сайт — это механизм, а не картинка.</h1>
-          <p data-i18n="intro.b">Покажу, из чего он собран. Листайте вниз.</p>
-        </article>
-        <article class="cap" data-cap="0">
-          <p class="eyebrow">01 · <span data-i18n="c0.k">Кейкапы</span></p>
-          <h2 data-i18n="c0.t">Дизайн</h2>
-          <p data-i18n="c0.b">То, что видит клиент: шрифты, цвет, ощущение. Ради этого вас запоминают.</p>
-        </article>
-        <article class="cap" data-cap="1">
-          <p class="eyebrow">02 · <span data-i18n="c1.k">Переключатели</span></p>
-          <h2 data-i18n="c1.t">Анимация и отклик</h2>
-          <p data-i18n="c1.b">Под каждой клавишей есть переключатель. Под каждой кнопкой на сайте есть отклик, который приятно нажимать.</p>
-        </article>
-        <article class="cap" data-cap="2">
-          <p class="eyebrow">03 · <span data-i18n="c2.k">Плата</span></p>
-          <h2 data-i18n="c2.t">Заявки и запись</h2>
-          <p data-i18n="c2.b">Всё соединяет плата: форма заявки, запись, сообщение вам в Telegram и защита от спама.</p>
-        </article>
-        <article class="cap" data-cap="3">
-          <p class="eyebrow">04 · <span data-i18n="c3.k">Корпус и кабель</span></p>
-          <h2 data-i18n="c3.t">Хостинг, домен, скорость</h2>
-          <p data-i18n="c3.b">Корпус держит всё вместе: быстрый хостинг, собственный адрес, удобство на телефоне.</p>
-        </article>
-        <article class="cap" data-cap="outro">
-          <h2 data-i18n="o.t">Соберу такой же для вашего бизнеса.</h2>
-          <p data-i18n="o.b">Шаблон — быстрее и дешевле. Под заказ — полностью ваш.</p>
-          <a class="btn" href="#order" data-i18n="cta">Заказать сайт</a>
-        </article>
+    <section class="order rv" id="order" aria-labelledby="ord-t">
+      <p class="eyebrow" data-i18n="ord.k">Заявка</p>
+      <h2 id="ord-t" data-i18n="ord.t">Получите макет бесплатно</h2>
+      <p class="sec-sub" data-i18n="ord.b">Оставьте имя и номер. Свяжусь с вами и сделаю макет вашего сайта.</p>
+      <div class="order__grid">
+      <form class="lead" id="lead-form" novalidate>
+        <label class="f"><span data-i18n="f.name">Имя</span>
+          <input name="name" type="text" autocomplete="name" maxlength="80" required></label>
+        <label class="f"><span data-i18n="f.phone">Телефон или WhatsApp</span>
+          <input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="+7 ___ ___ __ __" required></label>
+        <label class="f"><span data-i18n="f.choice">Что хотите</span>
+          <select name="choice" id="choice">
+            <option value="barber"></option><option value="pc"></option><option value="dental"></option><option value="coffee"></option><option value="custom"></option>
+          </select></label>
+        <label class="f f--hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        <label class="check"><input name="consent" type="checkbox" required>
+          <span><span data-i18n="f.consent">Согласен на обработку имени и номера для связи по заявке.</span> <a href="/privacy.html" data-i18n="priv">Политика конфиденциальности</a></span></label>
+        <button class="btn btn--hot" type="submit" data-i18n="f.send">Отправить заявку</button>
+        <p class="lead__status" id="lead-status" role="status" aria-live="polite"></p>
+      </form>
+      <ul class="order__side">
+        <li data-i18n="ord.s1">Макет бесплатный</li>
+        <li data-i18n="ord.s2">Не понравится — ничего не платите</li>
+        <li data-i18n="ord.s3">Заявка сразу приходит мне в Telegram</li>
+      </ul>
       </div>
-
-      <ol class="rail" aria-hidden="true"><li></li><li></li><li></li><li></li></ol>
-      <p class="scrollhint" aria-hidden="true" data-i18n="hint">листайте</p>
-    </div>
-  </section>
-
-  <section class="works" id="works" aria-labelledby="w-t">
-    <header class="sec-head">
-      <p class="eyebrow" data-i18n="w.k">Работа</p>
-      <h2 id="w-t" data-i18n="w.t">Пример: LIW ARENA</h2>
-    </header>
-    <a class="work" href="https://liw-arena.vercel.app" target="_blank" rel="noopener noreferrer">
-      <img src="/images/liw-arena.webp" alt="" width="1400" height="691" loading="lazy" decoding="async">
-      <div class="work__body">
-        <p data-i18n="w.b">Сайт компьютерного клуба: выбор ПК, тарифы, онлайн-бронирование и админ-панель. Демо-проект.</p>
-        <ul class="tags"><li>Next.js</li><li data-i18n="w.t1">Бронирование</li><li data-i18n="w.t2">База данных</li><li data-i18n="w.t3">Админ-панель</li></ul>
-        <span class="work__go" data-i18n="w.go">Открыть проект →</span>
-      </div>
-    </a>
-  </section>
-
-  <section class="tpl" id="templates" aria-labelledby="tpl-t">
-    <header class="sec-head">
-      <p class="eyebrow" data-i18n="tpl.k">Шаблоны</p>
-      <h2 id="tpl-t" data-i18n="tpl.t">Выберите нишу — посмотрите свой сайт</h2>
-      <p class="sec-sub" data-i18n="tpl.b">Живые демо</p>
-    </header>
-    <div class="tpl__tabs" role="group" aria-label="Ниша" id="tpl-tabs"></div>
-    <div class="demo" id="demo" data-theme="barber"></div>
-    <div class="tpl__buy">
-      <p><span data-i18n="tpl.from">Шаблон</span> <b data-i18n="tar.a.p">от 35 000 ₸</b> <small data-i18n="tpl.note">Демо-тексты и цены условные.</small></p>
-      <a class="btn" href="#order" id="tpl-order" data-i18n="tpl.order">Заказать этот шаблон</a>
-    </div>
-  </section>
-
-  <section class="tar" id="tariffs" aria-labelledby="tar-t">
-    <header class="sec-head">
-      <p class="eyebrow" data-i18n="tar.k">Тарифы</p>
-      <h2 id="tar-t" data-i18n="tar.t">Два способа получить сайт</h2>
-    </header>
-    <div class="tar__cols">
-      <article class="plan">
-        <h3 data-i18n="tar.a.n">Шаблон</h3>
-        <p class="plan__price" data-i18n="tar.a.p">от 35 000 ₸</p>
-        <p class="plan__d" data-i18n="tar.a.d"></p>
-        <ul><li data-i18n="tar.a.1"></li><li data-i18n="tar.a.2"></li><li data-i18n="tar.a.3"></li><li data-i18n="tar.a.4"></li></ul>
-      </article>
-      <article class="plan plan--alt">
-        <h3 data-i18n="tar.b.n">Под заказ</h3>
-        <p class="plan__price" data-i18n="tar.b.p">от 150 000 ₸</p>
-        <p class="plan__d" data-i18n="tar.b.d"></p>
-        <a class="plan__link" href="#order" data-choice="custom" data-i18n="tar.b.cta">Заказать сайт под заказ</a>
-        <ul><li data-i18n="tar.b.1"></li><li data-i18n="tar.b.2"></li><li data-i18n="tar.b.3"></li><li data-i18n="tar.b.4"></li></ul>
-      </article>
-    </div>
-    <p class="tar__note" data-i18n="tar.note"></p>
-  </section>
-
-  <section class="order" id="order" aria-labelledby="ord-t">
-    <p class="eyebrow" data-i18n="ord.k">Заявка</p>
-    <h2 id="ord-t" data-i18n="ord.t">Оставьте заявку</h2>
-    <p class="sec-sub" data-i18n="ord.b"></p>
-    <form class="lead" id="lead-form" novalidate>
-      <label class="f"><span data-i18n="f.name">Имя</span>
-        <input name="name" type="text" autocomplete="name" maxlength="80" required></label>
-      <label class="f"><span data-i18n="f.phone">Телефон или WhatsApp</span>
-        <input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="+7 ___ ___ __ __" required></label>
-      <label class="f"><span data-i18n="f.choice">Что хотите</span>
-        <select name="choice" id="choice">
-          <option value="barber"></option><option value="pc"></option><option value="dental"></option><option value="coffee"></option><option value="custom"></option>
-        </select></label>
-      <label class="f f--hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
-      <label class="check"><input name="consent" type="checkbox" required>
-        <span><span data-i18n="f.consent">Согласен на обработку имени и номера для связи по заявке.</span> <a href="/privacy.html" data-i18n="priv">Политика конфиденциальности</a></span></label>
-      <button class="btn" type="submit" data-i18n="f.send">Отправить заявку</button>
-      <p class="lead__status" id="lead-status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="direct"><span data-i18n="dir">Или напишите напрямую:</span>
-      <a data-wa target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a data-ig target="_blank" rel="noopener noreferrer" hidden>Instagram</a></p>
-  </section>
+      <p class="direct"><span data-i18n="dir">Или напишите напрямую:</span>
+        <a data-wa target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a data-ig target="_blank" rel="noopener noreferrer" hidden>Instagram</a></p>
+    </section>
+  </main>
 
   <footer class="foot">
     <span>© LIW · lost in wired</span>
     <span class="foot__links"><a data-wa target="_blank" rel="noopener noreferrer">WhatsApp</a> <a data-ig target="_blank" rel="noopener noreferrer" hidden>Instagram</a></span>
     <a href="/privacy.html" data-i18n="priv">Политика конфиденциальности</a>
   </footer>
+
+  <a class="stickywa" data-wa target="_blank" rel="noopener noreferrer"><span data-i18n="cta.wa">Написать в WhatsApp</span></a>
 </body>
 </html>

@@ -1,26 +1,20 @@
 import '@fontsource-variable/unbounded/wght.css';
 import '@fontsource-variable/jetbrains-mono/wght.css';
-import './style.css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '@fontsource-variable/literata/wght.css';
+import './style.css';
 import { dict } from './i18n.js';
 import { niches, nicheOrder } from './niches.js';
 import { WHATSAPP, WHATSAPP_DISPLAY, INSTAGRAM } from './contacts.js';
 
-gsap.registerPlugin(ScrollTrigger);
-
-// режим страницы определяем до подстановки текстов: без движения / телефон (CSS-слои) / десктоп (WebGL)
 const root = document.documentElement;
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const phone = window.matchMedia('(max-width: 760px)').matches;
-if (reduce) root.classList.add('no3d');
-else if (phone) root.classList.add('m-layers');
+root.classList.add('js');
 
 // ---------- шаблоны ----------
 let lang = 'ru';
 let niche = 'barber';
 const esc = (v) => String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+const waLink = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
 const PC_BUSY = [2, 5, 9, 12, 13, 19];
 
@@ -87,8 +81,8 @@ function renderTemplates() {
     </div>
     <p class="demo__feat">${esc(n.feat)}</p>`;
   if (niche === 'coffee') fillMenu(n, 0);
-  const pick = document.getElementById('order-pick');
-  if (pick) pick.textContent = n.label;
+  const wa = document.getElementById('tpl-wa');
+  if (wa) wa.href = waLink(dict[lang]['wa.tpl'] + n.label);
 }
 
 function setCta(text) {
@@ -134,11 +128,9 @@ function say(key, ok) {
   statusEl.dataset.state = ok ? 'ok' : 'err';
 }
 
-// «Заказать этот шаблон» / «Заказать под заказ» подставляют выбор в форму
+// «Обсудить проект» подставляет выбор в форму
 document.addEventListener('click', (e) => {
-  const buy = e.target.closest('#tpl-order');
   const custom = e.target.closest('[data-choice]');
-  if (buy) document.getElementById('choice').value = niche;
   if (custom) document.getElementById('choice').value = custom.dataset.choice;
 });
 
@@ -182,15 +174,15 @@ function applyLang(l) {
   document.documentElement.lang = lang;
   renderTemplates();
   document.querySelectorAll('[data-wa]').forEach((a) => {
-    a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t['wa.msg'])}`;
-    a.textContent = `WhatsApp ${WHATSAPP_DISPLAY}`;
+    a.href = waLink(t['wa.msg']);
+    if (!a.querySelector('span')) a.textContent = `WhatsApp ${WHATSAPP_DISPLAY}`;
   });
   document.querySelectorAll('[data-ig]').forEach((a) => {
     a.hidden = !INSTAGRAM;
     if (INSTAGRAM) a.href = `https://instagram.com/${INSTAGRAM}`;
   });
   document.querySelectorAll('#choice option').forEach((o) => { o.textContent = t['o.' + o.value]; });
-  document.querySelectorAll('[data-i18n]').forEach((el) => { const k = el.dataset.i18n; const v = (root.classList.contains('m-layers') && t['p.' + k]) || t[k]; if (v) el.textContent = v; });
+  document.querySelectorAll('[data-i18n]').forEach((el) => { const k = el.dataset.i18n; const v = t[k]; if (v) el.textContent = v; });
   document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   try { localStorage.setItem('liw-lang', lang); } catch { /* ignore */ }
 }
@@ -199,51 +191,18 @@ try { saved = localStorage.getItem('liw-lang') || 'ru'; } catch { /* ignore */ }
 document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 applyLang(saved);
 
-// ---------- 3D или запасной вариант ----------
-function webglOk() {
-  try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; }
-}
-const lowEnd = (navigator.deviceMemory && navigator.deviceMemory <= 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2);
+// ---------- шапка и появление блоков ----------
+const topbar = document.querySelector('.top');
+const onScroll = () => topbar.classList.toggle('top--on', window.scrollY > 24);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
 
-if (root.classList.contains('no3d')) {
-  // без анимации: обычная страница
-} else if (phone) {
-  init();
-} else if (!webglOk() || lowEnd) {
-  root.classList.add('no3d');
+const reveal = [...document.querySelectorAll('.rv')];
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  reveal.forEach((el) => io.observe(el));
 } else {
-  init();
-}
-
-async function init() {
-  // на телефоне вместо WebGL — лёгкие CSS-слои (three.js даже не загружается)
-  let gl;
-  if (phone) {
-    gl = (await import('./layers.js')).createLayers();
-  } else {
-    const { createScene } = await import('./scene.js');
-    gl = createScene(document.querySelector('.gl'));
-  }
-  const caps = [...document.querySelectorAll('.cap')];
-  const dots = [...document.querySelectorAll('.rail li')];
-  const hint = document.querySelector('.scrollhint');
-
-  // границы подписей по прогрессу скролла: intro, 0..3, outro
-  const marks = [0.08, 0.32, 0.52, 0.72, 0.9];
-  const keyOf = ['intro', '0', '1', '2', '3', 'outro'];
-
-  function update(p) {
-    const step = marks.filter((m) => p >= m).length;     // 0..5
-    const active = step >= 1 && step <= 4 ? step - 1 : -1;
-    gl.set(p, active);
-    caps.forEach((c) => c.classList.toggle('on', c.dataset.cap === keyOf[step]));
-    dots.forEach((d, i) => d.classList.toggle('on', i === active));
-    hint.classList.toggle('off', p > 0.04);
-  }
-
-  ScrollTrigger.create({ trigger: '.story', start: 'top top', end: 'bottom bottom', onUpdate: (s) => update(s.progress) });
-  update(0);
-  window.addEventListener('resize', () => gl.resize());
-  gl.start();
-  document.addEventListener('visibilitychange', () => (document.hidden ? gl.stop() : gl.start()));
+  reveal.forEach((el) => el.classList.add('in'));
 }
