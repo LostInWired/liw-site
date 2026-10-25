@@ -44,24 +44,18 @@ function widgetHtml(id, n) {
     <ul class="menu" data-role="menu"></ul><p class="badge">${esc(w.badge)}</p>`;
 }
 
-function fillMenu(n, tab) {
-  const ul = document.querySelector('[data-role="menu"]');
+function fillMenu(n, tab, scope = document.getElementById('demo')) {
+  const ul = scope.querySelector('[data-role="menu"]');
   if (!ul) return;
   ul.innerHTML = n.w.menu[tab].map(([a, p]) => `<li><span>${esc(a)}</span><em>${esc(p)}</em></li>`).join('');
-  document.querySelectorAll('[data-ctab]').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.ctab) === tab)));
+  scope.querySelectorAll('[data-ctab]').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.ctab) === tab)));
 }
 
-function renderTemplates() {
-  const n = niches[niche][lang];
-  document.getElementById('tpl-tabs').innerHTML = nicheOrder
-    .map((id) => `<button type="button" data-niche="${id}" aria-pressed="${id === niche}">${esc(niches[id][lang].label)}</button>`)
-    .join('');
-  const demo = document.getElementById('demo');
-  demo.dataset.theme = niche;
+function demoHtml(id, n) {
   const list = n.s.length
     ? `<div class="demo__prices"><h4>${esc(n.listT)}</h4><ul class="demo__list">${n.s.map((x, i) => `<li><span>${esc(x)}</span><em>${esc(n.p[i])}</em></li>`).join('')}</ul></div>`
     : '';
-  demo.innerHTML = `
+  return `
     <div class="demo__bar"><i></i><i></i><i></i><span>${esc(n.url)}</span></div>
     <div class="demo__page">
       <div class="demo__nav"><b>${esc(n.brand)}</b>${n.nav.map((x) => `<span>${esc(x)}</span>`).join('')}</div>
@@ -74,19 +68,40 @@ function renderTemplates() {
         <div class="demo__art" aria-hidden="true"></div>
       </div>
       <div class="demo__grid">
-        <div class="demo__widget">${widgetHtml(niche, n)}</div>
+        <div class="demo__widget">${widgetHtml(id, n)}</div>
         ${list}
       </div>
       <div class="demo__foot"><span>${esc(n.foot[0])}</span><span>${esc(n.foot[1])}</span></div>
     </div>
     <p class="demo__feat">${esc(n.feat)}</p>`;
+}
+
+function renderPhones() {
+  document.querySelectorAll('[data-phone]').forEach((el) => {
+    const id = el.dataset.phone;
+    const n = niches[id][lang];
+    el.dataset.theme = id;
+    el.innerHTML = demoHtml(id, n);
+    if (n.w.menu) fillMenu(n, 0, el);
+  });
+}
+
+function renderTemplates() {
+  const n = niches[niche][lang];
+  document.getElementById('tpl-tabs').innerHTML = nicheOrder
+    .map((id) => `<button type="button" data-niche="${id}" aria-pressed="${id === niche}">${esc(niches[id][lang].label)}</button>`)
+    .join('');
+  const demo = document.getElementById('demo');
+  demo.dataset.theme = niche;
+  demo.innerHTML = demoHtml(niche, n);
   if (n.w.menu) fillMenu(n, 0);
   const wa = document.getElementById('tpl-wa');
   if (wa) wa.href = waLink(dict[lang]['wa.tpl'] + n.label);
+  renderPhones();
 }
 
 function setCta(text) {
-  const el = document.querySelector('[data-role="cta"]');
+  const el = document.querySelector('#demo [data-role="cta"]');
   if (el) el.textContent = text;
 }
 
@@ -101,16 +116,16 @@ document.addEventListener('click', (e) => {
   const n = niches[niche][lang];
   const slot = e.target.closest('[data-slot]');
   if (slot) {
-    document.querySelectorAll('[data-slot]').forEach((b) => b.classList.toggle('slot--on', b === slot));
+    document.querySelectorAll('#demo [data-slot]').forEach((b) => b.classList.toggle('slot--on', b === slot));
     setCta(`${n.btn} · ${slot.dataset.slot}`);
     return;
   }
   const seat = e.target.closest('[data-seat]');
   if (seat) {
-    document.querySelectorAll('[data-seat]').forEach((b) => b.classList.toggle('seat--on', b === seat));
+    document.querySelectorAll('#demo [data-seat]').forEach((b) => b.classList.toggle('seat--on', b === seat));
     const z = Number(seat.dataset.z);
     const price = n.p[z === 0 ? 1 : 0];
-    document.querySelector('[data-role="picked"]').textContent = `${n.w.seat} ${seat.dataset.seat} · ${n.w.zones[z]} · ${price}`;
+    document.querySelector('#demo [data-role="picked"]').textContent = `${n.w.seat} ${seat.dataset.seat} · ${n.w.zones[z]} · ${price}`;
     setCta(`${n.btn} · ${seat.dataset.seat}`);
     return;
   }

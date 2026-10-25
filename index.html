@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LIW — сайт для вашего бизнеса за 3–5 дней, от 25 000 ₸</title>
-  <meta name="description" content="Сайты для малого бизнеса в Казахстане: онлайн-запись, заявки в Telegram, WhatsApp, русский и казахский. Сначала бесплатный макет, потом решаете.">
+  <meta name="description" content="Сайты для малого бизнеса в Казахстане: заявки в Telegram, WhatsApp, русский и казахский. Сначала бесплатный макет, потом решаете.">
   <link rel="canonical" href="https://liw-site.netlify.app/">
   <meta name="theme-color" content="#0b0c10">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="LIW — lost in wired">
   <meta property="og:title" content="LIW — сайт для вашего бизнеса за 3–5 дней, от 25 000 ₸">
-  <meta property="og:description" content="Онлайн-запись, заявки в Telegram, WhatsApp, русский и казахский. Сначала бесплатный макет, потом решаете.">
+  <meta property="og:description" content="Заявки в Telegram, WhatsApp, русский и казахский. Сначала бесплатный макет, потом решаете.">
   <meta property="og:image" content="https://liw-site.netlify.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -27,7 +27,7 @@
   <header class="top" id="top">
     <a class="brand" href="#top" aria-label="LIW"><b>LIW</b><span>lost in wired</span></a>
     <nav class="nav" aria-label="Разделы">
-      <a href="#demo-block" data-i18n="nav.demo">Примеры</a>
+      <a href="#examples" data-i18n="nav.demo">Примеры</a>
       <a href="#how" data-i18n="nav.how">Как это работает</a>
       <a href="#tariffs" data-i18n="nav.price">Цены</a>
       <a href="#faq" data-i18n="nav.faq">Вопросы</a>
@@ -45,11 +45,11 @@
 
       <div class="hero__copy">
         <p class="eyebrow" data-i18n="intro.k">Сайты для малого бизнеса · Казахстан</p>
-        <h1 data-i18n="intro.t">Сайт, который приводит клиентов. За 3–5 дней.</h1>
-        <p class="hero__lead" data-i18n="intro.b">Онлайн-запись, заявки в Telegram и кнопка WhatsApp. Сначала покажу макет вашего сайта бесплатно, потом решаете.</p>
+        <h1 data-i18n="intro.t">Сайт, который приводит клиентов. За 3⁠–⁠5 дней.</h1>
+        <p class="hero__lead" data-i18n="intro.b">Заявки клиентов сразу в Telegram и кнопка WhatsApp. Сначала покажу макет вашего сайта бесплатно, потом решаете.</p>
         <div class="hero__cta">
           <a class="btn btn--hot" data-wa target="_blank" rel="noopener noreferrer"><span data-i18n="cta.wa">Написать в WhatsApp</span></a>
-          <a class="btn btn--ghost" href="#demo-block" data-i18n="cta.demo">Смотреть примеры ↓</a>
+          <a class="btn btn--ghost" href="#examples" data-i18n="cta.demo">Смотреть примеры ↓</a>
         </div>
         <ul class="chips">
           <li data-i18n="chip.1">от 25 000 ₸</li>
@@ -59,14 +59,23 @@
         </ul>
       </div>
 
-      <div class="hero__demo" id="demo-block">
-        <p class="demo__lbl" data-i18n="tpl.t">Выберите нишу и посмотрите свой сайт</p>
-        <div class="tpl__tabs" role="group" aria-label="Ниша" id="tpl-tabs"></div>
-        <div class="demo" id="demo" data-theme="barber"></div>
-        <div class="tpl__buy">
-          <p><span data-i18n="tpl.from">Шаблон</span> <b data-i18n="tar.a.p">от 25 000 ₸</b> <small data-i18n="tpl.note">Демо-тексты и цены условные. Название, цены и фото заменим на ваши.</small></p>
-          <a class="btn btn--hot" id="tpl-wa" target="_blank" rel="noopener noreferrer"><span data-i18n="tpl.order">Хочу такой сайт</span></a>
-        </div>
+      <div class="phones" aria-hidden="true" inert>
+        <div class="phone phone--l"><div class="phone__screen"><div class="demo" data-phone="barber"></div></div></div>
+        <div class="phone phone--c"><div class="phone__screen"><div class="demo" data-phone="beauty"></div></div></div>
+        <div class="phone phone--r"><div class="phone__screen"><div class="demo" data-phone="auto"></div></div></div>
+      </div>
+    </section>
+
+    <section class="examples" id="examples" aria-labelledby="ex-t">
+      <header class="sec-head">
+        <p class="eyebrow" data-i18n="ex.k">Примеры</p>
+        <h2 id="ex-t" data-i18n="tpl.t">Выберите нишу и посмотрите свой сайт</h2>
+      </header>
+      <div class="tpl__tabs" role="group" aria-label="Ниша" id="tpl-tabs"></div>
+      <div class="demo" id="demo" data-theme="barber"></div>
+      <div class="tpl__buy">
+        <p><span data-i18n="tpl.from">Шаблон</span> <b data-i18n="tar.a.p">от 25 000 ₸</b> <small data-i18n="tpl.note">Демо-тексты и цены условные. Название, цены и фото заменим на ваши.</small></p>
+        <a class="btn btn--hot" id="tpl-wa" target="_blank" rel="noopener noreferrer"><span data-i18n="tpl.order">Хочу такой сайт</span></a>
       </div>
     </section>
 
@@ -88,7 +97,7 @@
         <h2 id="why-t" data-i18n="why.t">Сайт работает, пока вы заняты делом.</h2>
       </header>
       <ul class="why__grid">
-        <li><h3 data-i18n="why.1t">Клиенты записываются сами</h3><p data-i18n="why.1b">Запись, бронь или заявка в пару касаний, без звонков и долгой переписки.</p></li>
+        <li><h3 data-i18n="why.1t">Клиенты оставляют заявку сами</h3><p data-i18n="why.1b">Выбрали услугу и время, нажали кнопку, и вам пришла заявка. Без звонков и долгой переписки.</p></li>
         <li><h3 data-i18n="why.2t">Заявки сразу вам в Telegram</h3><p data-i18n="why.2b">Сообщение приходит мгновенно. Рядом всегда кнопка WhatsApp.</p></li>
         <li><h3 data-i18n="why.3t">Удобно с телефона</h3><p data-i18n="why.3b">Большинство клиентов открывают сайт на телефоне. Сайт сделан сначала под него.</p></li>
         <li><h3 data-i18n="why.4t">На русском и казахском</h3><p data-i18n="why.4b">Переключатель языка на сайте. Клиент читает на том языке, на котором ему удобно.</p></li>
