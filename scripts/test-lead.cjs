@@ -31,6 +31,7 @@ test('нормальная заявка уходит в Telegram', async () => {
   assert.ok(sent[0].body.text.includes('Шаблон: барбершоп') && sent[0].body.text.includes('+7 777 123 45 67'));
 });
 test('собственный сайт принимается', async () => assert.strictEqual(await status(ev({ ...good, choice: 'custom' })), 200));
+for (const c of ['auto', 'beauty', 'fitness']) test(`шаблон ${c} принимается`, async () => assert.strictEqual(await status(ev({ ...good, choice: c })), 200));
 test('неизвестный выбор отклоняется', async () => assert.strictEqual(await status(ev({ ...good, choice: 'hack' })), 400));
 test('без согласия отклоняется', async () => assert.strictEqual(await status(ev({ ...good, consent: false })), 400));
 test('без имени отклоняется', async () => assert.strictEqual(await status(ev({ ...good, name: '  ' })), 400));

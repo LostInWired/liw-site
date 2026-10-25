@@ -20,12 +20,12 @@ const PC_BUSY = [2, 5, 9, 12, 13, 19];
 
 function widgetHtml(id, n) {
   const w = n.w;
-  if (id === 'barber') {
+  if (w.slots) {
     return `<h4>${esc(w.title)}</h4><div class="slots">${w.slots.map((t, i) => w.busy.includes(i)
       ? `<span class="slot slot--busy" title="${esc(w.busyL)}">${t}</span>`
       : `<button type="button" class="slot" data-slot="${t}">${t}</button>`).join('')}</div>`;
   }
-  if (id === 'pc') {
+  if (w.zones) {
     const seats = Array.from({ length: 24 }, (_, i) => i + 1).map((k) => {
       const zone = k <= 8 ? 0 : 1;
       return PC_BUSY.includes(k)
@@ -36,7 +36,7 @@ function widgetHtml(id, n) {
       <p class="legend"><i class="seat"></i>${esc(w.legend[0])} <i class="seat seat--busy"></i>${esc(w.legend[1])} <i class="seat seat--on"></i>${esc(w.legend[2])}</p>
       <p class="picked" data-role="picked">${esc(w.hint)}</p>`;
   }
-  if (id === 'dental') {
+  if (w.steps) {
     return `<h4>${esc(w.title)}</h4><ol class="steps">${w.steps.map(([t, d], i) => `<li><span>${i + 1}</span><b>${esc(t)}</b><em>${esc(d)}</em></li>`).join('')}</ol>
       <p class="badge">${esc(w.badge)}</p>`;
   }
@@ -80,7 +80,7 @@ function renderTemplates() {
       <div class="demo__foot"><span>${esc(n.foot[0])}</span><span>${esc(n.foot[1])}</span></div>
     </div>
     <p class="demo__feat">${esc(n.feat)}</p>`;
-  if (niche === 'coffee') fillMenu(n, 0);
+  if (n.w.menu) fillMenu(n, 0);
   const wa = document.getElementById('tpl-wa');
   if (wa) wa.href = waLink(dict[lang]['wa.tpl'] + n.label);
 }
