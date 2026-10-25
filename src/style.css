@@ -297,14 +297,11 @@ button.seat:hover { background: color-mix(in srgb, var(--d-acc) 45%, transparent
 .steps3 p, .why__grid p, .plan__d, .plan li, .faq details p, .work__body p, .sec-sub, .order__side li { font-size: 17px; }
 .tar__note, .tpl__buy small, .direct, .check { font-family: var(--text); }
 
-/* ---------- светлые блоки ---------- */
-.light { position: relative; isolation: isolate; padding-bottom: clamp(56px, 9vh, 96px); --ink: #17181f; --muted: #575a69; --line: rgba(23, 24, 31, .16); --accent: #17181f; --hot: #17181f; color: var(--ink); }
-.light::before { content: ""; position: absolute; z-index: -1; inset: 0 calc(50% - 50vw); background: #f2ecdf; }
+/* ---------- тонально выделенные блоки (тёмные) ---------- */
+.light { position: relative; isolation: isolate; padding-bottom: clamp(56px, 9vh, 96px); }
+.light::before { content: ""; position: absolute; z-index: -1; inset: 0 calc(50% - 50vw); background: #101219; border-block: 1px solid rgba(255, 255, 255, .07); }
 .js .light.rv { transform: none; }
-.light .eyebrow { color: #6a5d3a; }
-.light .steps3 li::before { box-shadow: none; }
-.light ::selection { background: #17181f; color: #f2ecdf; }
-.light :focus-visible { outline-color: #17181f; }
+.light .steps3 .n { color: var(--accent); }
 
 /* ---------- новые демо-темы ---------- */
 .demo[data-theme="auto"] { --d-bg: #16171b; --d-fg: #eceae4; --d-acc: #ff7a1a; --d-on: #16171b; --d-font: var(--display); }
@@ -346,3 +343,5 @@ button.seat:hover { background: color-mix(in srgb, var(--d-acc) 45%, transparent
 /* ---------- блок «Примеры» ---------- */
 .examples { max-width: 1240px; margin-inline: auto; padding: clamp(56px, 9vh, 100px) var(--gutter) clamp(56px, 9vh, 96px); }
 .examples .sec-head { margin-bottom: 24px; }
+
+.demo__note { margin: 12px 0 0; font-size: 14px; opacity: .75; }

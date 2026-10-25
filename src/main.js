@@ -16,25 +16,12 @@ const esc = (v) => String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 
 const waLink = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
-const PC_BUSY = [2, 5, 9, 12, 13, 19];
-
 function widgetHtml(id, n) {
   const w = n.w;
   if (w.slots) {
     return `<h4>${esc(w.title)}</h4><div class="slots">${w.slots.map((t, i) => w.busy.includes(i)
       ? `<span class="slot slot--busy" title="${esc(w.busyL)}">${t}</span>`
-      : `<button type="button" class="slot" data-slot="${t}">${t}</button>`).join('')}</div>`;
-  }
-  if (w.zones) {
-    const seats = Array.from({ length: 24 }, (_, i) => i + 1).map((k) => {
-      const zone = k <= 8 ? 0 : 1;
-      return PC_BUSY.includes(k)
-        ? `<span class="seat seat--busy" data-z="${zone}">${k}</span>`
-        : `<button type="button" class="seat" data-seat="${k}" data-z="${zone}">${k}</button>`;
-    }).join('');
-    return `<h4>${esc(w.title)}</h4><div class="hall"><div class="hall__zone"><b>${esc(w.zones[0])}</b></div><div class="seats">${seats}</div></div>
-      <p class="legend"><i class="seat"></i>${esc(w.legend[0])} <i class="seat seat--busy"></i>${esc(w.legend[1])} <i class="seat seat--on"></i>${esc(w.legend[2])}</p>
-      <p class="picked" data-role="picked">${esc(w.hint)}</p>`;
+      : `<button type="button" class="slot" data-slot="${t}">${t}</button>`).join('')}</div>${w.note ? `<p class="demo__note">${esc(w.note)}</p>` : ''}`;
   }
   if (w.steps) {
     return `<h4>${esc(w.title)}</h4><ol class="steps">${w.steps.map(([t, d], i) => `<li><span>${i + 1}</span><b>${esc(t)}</b><em>${esc(d)}</em></li>`).join('')}</ol>
@@ -118,15 +105,6 @@ document.addEventListener('click', (e) => {
   if (slot) {
     document.querySelectorAll('#demo [data-slot]').forEach((b) => b.classList.toggle('slot--on', b === slot));
     setCta(`${n.btn} · ${slot.dataset.slot}`);
-    return;
-  }
-  const seat = e.target.closest('[data-seat]');
-  if (seat) {
-    document.querySelectorAll('#demo [data-seat]').forEach((b) => b.classList.toggle('seat--on', b === seat));
-    const z = Number(seat.dataset.z);
-    const price = n.p[z === 0 ? 1 : 0];
-    document.querySelector('#demo [data-role="picked"]').textContent = `${n.w.seat} ${seat.dataset.seat} · ${n.w.zones[z]} · ${price}`;
-    setCta(`${n.btn} · ${seat.dataset.seat}`);
     return;
   }
   const ct = e.target.closest('[data-ctab]');
