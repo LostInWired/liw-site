@@ -59,7 +59,7 @@ main { display: block; }
 .hero__wire path { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 7 12; animation: flow 3s linear infinite; vector-effect: non-scaling-stroke; }
 .hero__wire .b { opacity: .5; animation-duration: 5s; animation-direction: reverse; }
 @keyframes flow { to { stroke-dashoffset: -38; } }
-.hero__copy { align-self: center; max-width: 620px; }
+.hero__copy { max-width: 620px; }
 .hero h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.6vw, 58px); line-height: 1.04; letter-spacing: -.03em; }
 .hero__lead { margin-top: 20px; max-width: 46ch; color: var(--muted); font-size: 16px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
@@ -68,7 +68,8 @@ main { display: block; }
 .demo__lbl { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
 .hero__demo { min-width: 0; }
 @media (min-width: 1080px) {
-  .hero { grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: 56px; padding-top: 120px; min-height: min(100svh, 940px); }
+  .hero { grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: 56px; padding-top: 120px; align-items: start; }
+  .hero__copy { padding-top: clamp(16px, 7vh, 72px); }
 }
 
 /* ---------- секции ---------- */
