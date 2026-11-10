@@ -133,6 +133,7 @@ main { display: block; }
   --d-bg: #121317; --d-fg: #ece7da; --d-acc: #d4b06a; --d-on: #121317; --d-font: "Literata Variable", Georgia, serif;
   container-type: inline-size; border: 1px solid var(--line); background: var(--d-bg); color: var(--d-fg); font-family: var(--d-font); transition: background-color .4s, color .4s;
 }
+.demo[data-theme="barber"] { --d-bg: #f3ead9; --d-fg: #1b1612; --d-acc: #b3261e; --d-on: #fff; --d-font: "Literata Variable", Georgia, serif; }
 .demo[data-theme="pc"] { --d-bg: #07080f; --d-fg: #e6e9ff; --d-acc: #7c6cff; --d-on: #fff; --d-font: var(--mono); }
 .demo[data-theme="dental"] { --d-bg: #f7fbfb; --d-fg: #12343a; --d-acc: #0fa3a3; --d-on: #fff; --d-font: var(--display); }
 .demo[data-theme="coffee"] { --d-bg: #f1e6d3; --d-fg: #2b3a2f; --d-acc: #3f6b4f; --d-on: #f1e6d3; --d-font: "Literata Variable", Georgia, serif; }

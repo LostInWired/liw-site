@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARENA — компьютерный клуб (демо LIW)</title><meta name="description" content="Демо-сайт компьютерного клуба: зоны, конфигурации, калькулятор тарифа, игры, заявка."><meta name="robots" content="noindex">
+<meta name="theme-color" content="#07080f"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/demo/pc/style.css"><script src="/demo/pc/app.js" defer></script></head><body>
+<div class="demo">Это демо-сайт студии LIW. Названия и цены вымышлены. <a href="/#examples">← Все примеры</a> · <a href="/#order">Заказать такой же</a></div>
+<header class="bar"><div class="c bar__in"><a class="logo" href="#top">AR<span>E</span>NA</a>
+<nav class="nav" id="nv" aria-label="Меню"><a href="#zony">Зоны</a><a href="#tarify">Тарифы</a><a href="#igry">Игры</a><a href="#zayavka">Заявка</a></nav>
+<span class="live"><i></i>Свободно <b id="free">18</b> ПК</span><button class="burger" id="burger" aria-label="Меню" aria-expanded="false">☰</button></div></header>
+<main id="top">
+<section class="hero"><div class="floor" aria-hidden="true"></div><div class="c"><p class="pre">// Компьютерный клуб · Алматы · 24/7</p>
+<h1>Твоё место <em>ждёт</em></h1>
+<p class="lead">Мощные ПК, быстрый интернет и удобные кресла. Оставь заявку, и мы подготовим место к твоему приходу.</p>
+<div class="row"><a class="btn" href="#zayavka">Оставить заявку</a><a class="btn btn--o" href="#zony">Выбрать зону</a></div>
+<div class="hud"><div><b>32</b><span>игровых ПК</span></div><div><b>360 Гц</b><span>мониторы в VIP</span></div><div><b>1 Гбит</b><span>интернет</span></div><div><b class="g" id="free2">18 из 32</b><span>свободно сейчас (демо)</span></div></div></div></section>
+
+<section class="sec" id="zony"><div class="c"><p class="num">01 //</p><h2>Выбери зону</h2><p class="sub">Три зоны под разные задачи. Посмотри конфигурацию и посчитай стоимость.</p>
+<div class="zs" role="group" aria-label="Зона"><button type="button" class="z" data-k="std" aria-pressed="true"><b>Standard</b><span>для большинства игр · 700 ₸/ч</span></button><button type="button" class="z" data-k="boot" aria-pressed="false"><b>Bootcamp</b><span>для команд и турниров · 1 000 ₸/ч</span></button><button type="button" class="z" data-k="vip" aria-pressed="false"><b>VIP</b><span>максимум комфорта · 1 200 ₸/ч</span></button></div>
+<div class="cfg"><div class="panel"><ul class="spec" id="spec"></ul><div class="perf" id="perf"></div></div>
+<div class="panel calc"><label for="rng"><span>Время игры</span><b id="hours">3 часа</b></label><input type="range" id="rng" min="1" max="10" value="3"><p class="sub" id="rate"></p>
+<p class="sub">Итого</p><div class="big" id="cost">0 ₸</div><p class="note" id="note"></p><a class="btn" href="#zayavka">Оставить заявку</a></div></div></div></section>
+
+<section class="sec" id="tarify"><div class="c"><p class="num">02 //</p><h2>Тарифы</h2><p class="sub">Чем дольше сидишь, тем выгоднее.</p>
+<table class="tt"><thead><tr><th>Тариф</th><th>Условия</th><th>Цена</th></tr></thead><tbody>
+<tr><td>Standard</td><td>Любое время</td><td>700 ₸ / час</td></tr><tr><td>Bootcamp</td><td>Команда от 3 человек</td><td>1 000 ₸ / час</td></tr><tr><td>VIP</td><td>Закрытая зона</td><td>1 200 ₸ / час</td></tr>
+<tr class="hot"><td>Ночной пакет</td><td>22:00–08:00, Standard</td><td>2 500 ₸</td></tr><tr><td>5 часов и больше</td><td>Скидка на любую зону</td><td>−10%</td></tr></tbody></table></div></section>
+
+<section class="sec" id="igry"><div class="c"><p class="num">03 //</p><h2>Во что играем</h2><p class="sub">Все игры установлены на каждом ПК и обновляются заранее.</p>
+<div class="games" id="gf" role="group" aria-label="Жанр"><button type="button" class="chip" data-k="all" aria-pressed="true">Все</button><button type="button" class="chip" data-k="sh" aria-pressed="false">Шутеры</button><button type="button" class="chip" data-k="mb" aria-pressed="false">MOBA</button><button type="button" class="chip" data-k="br" aria-pressed="false">Battle Royale</button><button type="button" class="chip" data-k="sp" aria-pressed="false">Спорт и гонки</button></div>
+<div class="gg"><div class="g" data-g="sh"><b>Counter-Strike 2</b><span>Шутер</span></div><div class="g" data-g="sh"><b>Valorant</b><span>Шутер</span></div><div class="g" data-g="mb"><b>Dota 2</b><span>MOBA</span></div><div class="g" data-g="mb"><b>League of Legends</b><span>MOBA</span></div>
+<div class="g" data-g="br"><b>Apex Legends</b><span>Battle Royale</span></div><div class="g" data-g="br"><b>Fortnite</b><span>Battle Royale</span></div><div class="g" data-g="sp"><b>Rocket League</b><span>Спорт</span></div><div class="g" data-g="sp"><b>EA FC</b><span>Спорт</span></div></div></div></section>
+
+<section class="sec" id="zayavka"><div class="c"><p class="num">04 //</p><h2>Оставь заявку</h2><p class="sub">Выбери зону и часы выше, укажи удобное время, и мы подготовим место. Это демо, заявка никуда не уходит.</p>
+<div class="req panel"><div class="sum" id="sum"></div>
+<form class="form" id="form" novalidate><div><span class="sm">Когда придёшь</span><div class="chips" id="when" role="group" aria-label="Время"><button type="button" class="chip" aria-pressed="false">Сегодня днём</button><button type="button" class="chip" aria-pressed="false">Сегодня вечером</button><button type="button" class="chip" aria-pressed="false">Ночью</button><button type="button" class="chip" aria-pressed="false">Завтра</button></div></div>
+<div class="two"><div><span class="sm">Ник или имя</span><input type="text" id="nm" autocomplete="nickname" placeholder="Как к тебе обращаться"></div><div><span class="sm">Телефон</span><input type="tel" id="ph" autocomplete="tel" placeholder="+7 ___ ___ __ __"></div></div>
+<label class="cons"><input type="checkbox" id="cn"><span>Согласен на обработку персональных данных</span></label>
+<button class="btn" type="submit">Отправить заявку</button><p class="msg" id="msg" role="status"></p></form></div></div></section>
+</main>
+<footer class="ft"><div class="c ft__in"><span>© ARENA — демо-сайт компьютерного клуба · Алматы, пр. Примерный, 10 · круглосуточно</span><span>Сделано в <a href="/">LIW</a></span></div></footer>
+</body></html>

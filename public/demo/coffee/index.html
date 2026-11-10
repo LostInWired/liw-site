@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЗЕРНО — кофейня (демо LIW)</title><meta name="description" content="Демо-сайт кофейни: меню, заказ с собой, зерно, адрес."><meta name="robots" content="noindex">
+<meta name="theme-color" content="#f1e6d3"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/demo/coffee/style.css"><script src="/demo/coffee/app.js" defer></script></head><body>
+<div class="demo">Это демо-сайт студии LIW. Названия и цены вымышлены. <a href="/#examples">← Все примеры</a> · <a href="/#order">Заказать такой же</a></div>
+<header class="mast"><div class="c"><div class="mast__r"><span>Ежедневно 8:00–22:00</span><a class="logo" href="#top">Зерно<small>Кофейня · Алматы</small></a><span>+7 (000) 000-00-00</span></div>
+<nav class="nav" aria-label="Меню"><a href="#menu-s">Меню</a><a href="#zerno">Зерно</a><a href="#foto">Атмосфера</a><a href="#vizit">Визит</a></nav></div></header>
+<main id="top">
+<section class="hero"><div class="c hero__g"><div><span class="tag">Свежая обжарка каждую неделю</span>
+<h1>Кофе, который <em>ждут</em></h1>
+<p class="lead">Свежая обжарка, домашние десерты и уютное место в центре. Соберите заказ онлайн и заберите без очереди.</p>
+<div class="row"><a class="btn" href="#menu-s">Заказать с собой</a><a class="btn btn--o" href="#vizit">Как нас найти</a></div></div>
+<div class="cup" aria-hidden="true"><span class="badge badge--a">☕ Обжарка этой недели</span><span class="badge badge--b">Открыто до 22:00</span></div></div></section>
+
+<section class="sec" id="menu-s"><div class="c"><div class="head"><p class="k">Меню и заказ</p><h2>Соберите заказ</h2><p>Добавляйте позиции, выберите время, и мы приготовим к вашему приходу.</p></div>
+<div class="tabs" role="group" aria-label="Категория"><button class="tab" type="button" data-k="coffee" aria-pressed="true">Кофе</button><button class="tab" type="button" data-k="dessert" aria-pressed="false">Десерты</button><button class="tab" type="button" data-k="other" aria-pressed="false">Не кофе</button></div>
+<div class="shop"><div class="menu" id="menu"></div>
+<form class="cart" id="order" novalidate><h3>Ваш заказ</h3><p class="e" id="empty">Пока пусто. Добавьте что-нибудь из меню.</p><div id="lines"></div>
+<div class="tot"><span>Итого</span><b id="total">0 ₸</b></div>
+<p class="sub">Когда заберёте</p><div class="chips" id="when" role="group" aria-label="Время"><button type="button" class="chip" aria-pressed="false">Через 10 минут</button><button type="button" class="chip" aria-pressed="false">Через 20 минут</button><button type="button" class="chip" aria-pressed="false">Через 30 минут</button></div>
+<input type="text" id="nm" autocomplete="name" placeholder="Ваше имя" aria-label="Имя"><input type="tel" id="ph" autocomplete="tel" placeholder="+7 ___ ___ __ __" aria-label="Телефон">
+<button class="btn" type="submit">Отправить заказ</button><p class="msg" id="msg" role="status"></p></form></div></div></section>
+
+<section class="sec" id="zerno"><div class="c"><div class="head"><p class="k">Наше зерно</p><h2>Откуда наш кофе</h2><p>Обжариваем сами небольшими партиями, поэтому зерно всегда свежее.</p></div>
+<div class="beans"><div class="bean"><i>Э</i><h3>Эфиопия</h3><p>Йиргачеффе, промытая обработка</p><div class="notes"><span>жасмин</span><span>бергамот</span><span>персик</span></div></div>
+<div class="bean"><i>К</i><h3>Колумбия</h3><p>Уила, натуральная обработка</p><div class="notes"><span>карамель</span><span>красное яблоко</span><span>орех</span></div></div>
+<div class="bean"><i>Б</i><h3>Бразилия</h3><p>Серраду, мягкая обжарка</p><div class="notes"><span>шоколад</span><span>фундук</span><span>какао</span></div></div></div></div></section>
+
+<section class="sec" id="foto"><div class="c"><div class="head"><p class="k">Атмосфера</p><h2>Уютно, как дома</h2><p>В настоящем сайте здесь фото вашего заведения.</p></div>
+<div class="gal"><div class="w t g1">Интерьер</div><div>Бариста</div><div class="g2">Десерты</div><div>Зёрна</div><div class="w">Витрина</div><div class="t">Терраса</div><div class="g2">Чашка</div></div></div></section>
+
+<section class="sec" id="vizit"><div class="c"><div class="head"><p class="k">Визит</p><h2>Ждём вас в гости</h2></div>
+<div class="visit"><div class="vc"><h3>Адрес и часы</h3><ul><li><span>Адрес</span><span>Алматы, ул. Примерная, 3</span></li><li><span>Часы</span><span>Ежедневно 8:00–22:00</span></li><li><span>Телефон</span><span>+7 (000) 000-00-00</span></li><li><span>Instagram</span><span>@zerno.coffee</span></li></ul></div>
+<div class="map">Карта проезда</div></div></div></section>
+</main>
+<footer class="ft"><div class="c"><a class="logo" href="#top">Зерно<small>Кофейня · Алматы</small></a><div class="ft__c"><span>© ЗЕРНО — демо-сайт кофейни</span><span>Сделано в <a href="/">LIW</a></span></div></div></footer>
+</body></html>
