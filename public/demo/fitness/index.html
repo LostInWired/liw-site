@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PULSE — фитнес-клуб (демо LIW)</title><meta name="description" content="Демо-сайт фитнес-клуба: расписание занятий, абонементы, тренеры, запись на пробное."><meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0b"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/demo/fitness/style.css"><script src="/demo/fitness/app.js" defer></script></head><body>
+<div class="demo">Это демо-сайт студии LIW. Названия и цены вымышлены. <a href="/#examples">← Все примеры</a> · <a href="/#order">Заказать такой же</a></div>
+<header class="top"><div class="c top__in"><a class="logo" href="#top">Pulse<span>.</span></a>
+<nav class="nav" id="nv" aria-label="Меню"><a href="#raspisanie">Расписание</a><a href="#abonementy">Абонементы</a><a href="#trenery">Тренеры</a></nav>
+<a class="btn btn--sm" href="#" data-open="Пробное занятие">Пробная бесплатно</a><button class="burger" id="burger" aria-label="Меню" aria-expanded="false">☰</button></div></header>
+<main id="top">
+<section class="hero"><div class="c"><p class="eb">Фитнес-клуб · Алматы · 7:00–23:00</p>
+<h1><span class="o">Первая</span><br><span class="l">тренировка</span><br>бесплатно</h1>
+<p class="lead">Запишитесь на пробное занятие. Тренер встретит, проведёт по клубу и составит программу под вашу цель.</p>
+<div class="row"><a class="btn" href="#" data-open="Пробное занятие">Записаться на пробное</a><a class="btn btn--o" href="#raspisanie">Расписание</a></div>
+<div class="stats"><div><b data-to="1200" data-s="+">0</b><span>м² зала и студий</span></div><div><b data-to="40">0</b><span>занятий в неделю</span></div><div><b data-to="12">0</b><span>тренеров</span></div><div><b data-to="2500" data-s="+">0</b><span>участников клуба</span></div></div></div>
+<div class="strip" aria-hidden="true"><div class="strip__t"><span>Кроссфит</span><span>Йога</span><span>Бокс</span><span>Силовая</span><span>Пилатес</span><span>Кроссфит</span><span>Йога</span><span>Бокс</span><span>Силовая</span><span>Пилатес</span></div></div></section>
+
+<section class="sec" id="raspisanie"><div class="c"><p class="eb">Расписание</p><h2>Выберите занятие</h2><p class="sub">Выберите день и тип занятия, нажмите «Записаться». Расписание показано примером.</p>
+<div class="tabs" id="days" role="group" aria-label="День"></div>
+<div class="chips" id="types" role="group" aria-label="Тип занятия"><button type="button" class="chip" aria-pressed="true" data-k="all">Все</button><button type="button" class="chip" aria-pressed="false" data-k="yoga">Йога</button><button type="button" class="chip" aria-pressed="false" data-k="cross">Кроссфит</button><button type="button" class="chip" aria-pressed="false" data-k="box">Бокс</button><button type="button" class="chip" aria-pressed="false" data-k="power">Силовая</button><button type="button" class="chip" aria-pressed="false" data-k="pilates">Пилатес</button></div>
+<div class="sch" id="sch"></div></div></section>
+
+<section class="sec" id="abonementy"><div class="c"><p class="eb">Абонементы</p><h2>Выберите свой темп</h2><p class="sub">Чем дольше срок, тем дешевле месяц.</p>
+<div class="sw" role="group" aria-label="Срок"><button type="button" aria-pressed="true" data-m="1">1 месяц</button><button type="button" aria-pressed="false" data-m="3">3 месяца<em>−17%</em></button><button type="button" aria-pressed="false" data-m="12">12 месяцев<em>−30%</em></button></div>
+<div class="plans">
+<article class="plan"><h3>Дневной</h3><p class="price">0<small></small></p><p class="per"></p><ul><li>Зал и студии до 17:00</li><li>Групповые занятия</li><li>Раздевалка и душ</li></ul><a class="btn btn--o" href="#" data-open="Абонемент «Дневной»">Выбрать</a></article>
+<article class="plan plan--hot"><span class="plan__b">Хит</span><h3>Безлимит</h3><p class="price">0<small></small></p><p class="per"></p><ul><li>Весь день, без ограничений</li><li>Все групповые занятия</li><li>Персональная программа</li><li>Гостевой визит в месяц</li></ul><a class="btn" href="#" data-open="Абонемент «Безлимит»">Выбрать</a></article>
+<article class="plan"><h3>VIP</h3><p class="price">0<small></small></p><p class="per"></p><ul><li>Всё из «Безлимита»</li><li>4 персональных тренировки</li><li>Сауна и полотенца</li><li>Заморозка на 30 дней</li></ul><a class="btn btn--o" href="#" data-open="Абонемент «VIP»">Выбрать</a></article></div></div></section>
+
+<section class="sec" id="trenery"><div class="c"><p class="eb">Тренеры</p><h2>Команда клуба</h2><p class="sub">Выбирайте тренера под свою цель. Первое занятие со знакомством бесплатно.</p>
+<div class="tr"><article class="t" data-i="01"><h3>Тимур</h3><p>Силовая и функциональный тренинг</p><span>Стаж 10 лет</span></article>
+<article class="t" data-i="02"><h3>Арман</h3><p>Бокс и кардио, мастер спорта</p><span>Стаж 8 лет</span></article>
+<article class="t" data-i="03"><h3>Алина</h3><p>Йога и растяжка</p><span>Стаж 7 лет</span></article>
+<article class="t" data-i="04"><h3>Данияр</h3><p>Кроссфит и подготовка к соревнованиям</p><span>Стаж 6 лет</span></article></div></div></section>
+
+<section class="cta"><div class="c"><h2>Начните с пробной</h2><a class="btn" href="#" data-open="Пробное занятие">Записаться бесплатно</a></div></section>
+</main>
+<footer class="ft"><div class="c ft__in"><span>© PULSE — демо-сайт фитнес-клуба · г. Алматы, пр. Примерный, 12</span><span>Сделано в <a href="/">LIW</a></span></div></footer>
+<dialog id="dlg" aria-labelledby="dt"><button class="x" id="x" type="button" aria-label="Закрыть">✕</button>
+<form class="dlg" id="fm" novalidate><h3 id="dt">Запись</h3><div class="pick" id="pick"></div>
+<label>Имя<input type="text" id="nm" autocomplete="name" placeholder="Как к вам обращаться"></label>
+<label>Телефон<input type="tel" id="ph" autocomplete="tel" placeholder="+7 ___ ___ __ __"></label>
+<label class="cons"><input type="checkbox" id="cn"><span>Согласен на обработку персональных данных</span></label>
+<button class="btn" type="submit">Отправить заявку</button><p class="msg" id="msg" role="status"></p></form></dialog>
+</body></html>
