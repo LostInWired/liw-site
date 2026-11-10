@@ -345,3 +345,6 @@ button.seat:hover { background: color-mix(in srgb, var(--d-acc) 45%, transparent
 .examples .sec-head { margin-bottom: 24px; }
 
 .demo__note { margin: 12px 0 0; font-size: 14px; opacity: .75; }
+
+.tpl__btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.tpl__btns [hidden] { display: none; }

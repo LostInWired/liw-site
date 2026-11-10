@@ -3,7 +3,7 @@ import '@fontsource-variable/jetbrains-mono/wght.css';
 import '@fontsource-variable/literata/wght.css';
 import './style.css';
 import { dict } from './i18n.js';
-import { niches, nicheOrder } from './niches.js';
+import { niches, nicheOrder, fullDemos } from './niches.js';
 import { WHATSAPP, WHATSAPP_DISPLAY, INSTAGRAM } from './contacts.js';
 
 const root = document.documentElement;
@@ -82,6 +82,8 @@ function renderTemplates() {
   demo.dataset.theme = niche;
   demo.innerHTML = demoHtml(niche, n);
   if (n.w.menu) fillMenu(n, 0);
+  const full = document.getElementById('tpl-full');
+  if (full) { full.hidden = !fullDemos[niche]; if (fullDemos[niche]) full.href = fullDemos[niche]; }
   const wa = document.getElementById('tpl-wa');
   if (wa) wa.href = waLink(dict[lang]['wa.tpl'] + n.label);
   renderPhones();
