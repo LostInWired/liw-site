@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DENT+ — стоматология (демо LIW)</title><meta name="description" content="Демо-сайт стоматологии: подбор по жалобе, калькулятор цены, врачи, запись."><meta name="robots" content="noindex">
+<meta name="theme-color" content="#f2f7fa"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/demo/dental/style.css"><script src="/demo/dental/app.js" defer></script></head><body>
+<div class="demo">Это демо-сайт студии LIW. Названия и цены вымышлены. <a href="/#examples">← Все примеры</a> · <a href="/#order">Заказать такой же</a></div>
+<nav class="rail" aria-label="Разделы"><b>+</b>
+<a href="#top" class="on"><i>⌂</i>Главная</a><a href="#problem"><i>?</i>Подбор</a><a href="#price"><i>₸</i>Цены</a><a href="#doctors"><i>☺</i>Врачи</a><a href="#zapis"><i>✓</i>Запись</a>
+<a class="tel" href="tel:+70000000000">+7 000<br>000-00-00</a></nav>
+<div class="wrap"><main>
+<section id="top"><div class="bento">
+<div class="card s4"><p class="k">Стоматология DENT+ · Алматы</p><h1>Здоровая улыбка <em>без страха</em></h1>
+<p class="mut">Первая консультация бесплатно. Цену называем до начала лечения, лечим с современной анестезией.</p>
+<div class="row"><a class="btn" href="#zapis">Записаться на приём</a><a class="btn btn--o" href="#problem">Что вас беспокоит?</a></div></div>
+<div class="card card--b s2"><p class="k">Консультация</p><div class="big">0 ₸</div><p class="mut">Осмотр и план лечения с ценой</p></div>
+<div class="s2"><div class="ph">Фото клиники</div></div>
+<div class="card card--g s2"><p class="k">Чистка зубов</p><div class="big">12 000 ₸</div><p class="mut">Ультразвук + Air Flow, около часа</p></div>
+<div class="card card--ink s2"><p class="k">Ближайшее окно</p><div class="big">16:40</div><p class="mut">сегодня, к терапевту</p></div></div></section>
+
+<section class="sec" id="problem"><div class="head"><p class="k">Подбор</p><h2>Что вас беспокоит?</h2><p class="mut">Выберите, и мы подскажем, с чего начать. Это ориентир, диагноз ставит врач.</p></div>
+<div class="card"><div class="chips" id="help">
+<button type="button" class="chip" aria-pressed="false" data-k="pain">Болит зуб</button><button type="button" class="chip" aria-pressed="false" data-k="plaque">Налёт, запах, камень</button><button type="button" class="chip" aria-pressed="false" data-k="gums">Кровоточат дёсны</button><button type="button" class="chip" aria-pressed="false" data-k="white">Хочу белее</button><button type="button" class="chip" aria-pressed="false" data-k="gap">Нет зуба</button><button type="button" class="chip" aria-pressed="false" data-k="kid">Приведу ребёнка</button></div>
+<div class="res" id="res" hidden><b></b><p></p><div><button type="button" class="btn" id="res-add">Добавить в расчёт</button></div></div></div></section>
+
+<section class="sec" id="price"><div class="head"><p class="k">Цены</p><h2>Рассчитайте стоимость</h2><p class="mut">Отметьте нужное, и справа появится сумма. Точную цену назовёт врач после осмотра.</p></div>
+<div class="calc"><div class="card">
+<label class="ck"><input type="checkbox" data-id="cons" data-p="0" data-n="Консультация"><span>Консультация<small>Осмотр и план лечения</small></span><em>0 ₸</em></label>
+<label class="ck"><input type="checkbox" data-id="clean" data-p="12000" data-n="Профессиональная чистка"><span>Профессиональная чистка<small>Ультразвук, Air Flow, полировка</small></span><em>12 000 ₸</em></label>
+<label class="ck"><input type="checkbox" data-id="caries" data-p="15000" data-n="Лечение кариеса"><span>Лечение кариеса<small>С анестезией и пломбой</small></span><em>15 000 ₸</em></label>
+<label class="ck"><input type="checkbox" data-id="white" data-p="35000" data-n="Отбеливание"><span>Отбеливание<small>Кабинетная система</small></span><em>35 000 ₸</em></label>
+<label class="ck"><input type="checkbox" data-id="rm" data-p="10000" data-n="Удаление зуба"><span>Удаление зуба<small>Простое</small></span><em>10 000 ₸</em></label>
+<label class="ck"><input type="checkbox" data-id="kid" data-p="10000" data-n="Детский приём"><span>Детский приём<small>Лечение и профилактика</small></span><em>10 000 ₸</em></label>
+<label class="ck"><input type="checkbox" data-id="impl" data-p="150000" data-n="Имплантация"><span>Имплантация<small>Под ключ, с коронкой</small></span><em>150 000 ₸</em></label></div>
+<aside class="card card--ink sum"><p class="k">Ориентировочно</p><div class="tot" id="tot">0 ₸</div><p class="mut" id="chosen"></p><div class="row"><a class="btn btn--w" href="#zapis">Записаться</a></div></aside></div></section>
+
+<section class="sec" id="doctors"><div class="head"><p class="k">Врачи</p><h2>Наши специалисты</h2><p class="mut">Профессиональной чисткой занимается отдельный врач-гигиенист.</p></div>
+<div class="chips" id="dfilter"><button type="button" class="chip" aria-pressed="true" data-k="all">Все</button><button type="button" class="chip" aria-pressed="false" data-k="ther">Терапия</button><button type="button" class="chip" aria-pressed="false" data-k="hyg">Гигиена и чистка</button><button type="button" class="chip" aria-pressed="false" data-k="surg">Хирургия</button><button type="button" class="chip" aria-pressed="false" data-k="ortho">Ортодонтия</button><button type="button" class="chip" aria-pressed="false" data-k="kid">Дети</button></div>
+<div class="dgrid" id="dg" data-top="">
+<article class="card doc" data-s="ther"><div class="doc__a">Е</div><div><h3>Ерлан Сабитов</h3><p>Врач-терапевт, стаж 9 лет</p><span class="tag">Лечение кариеса</span></div></article>
+<article class="card doc" data-s="hyg"><div class="doc__a">А</div><div><h3>Асем Нурланова</h3><p>Гигиенист, стаж 6 лет</p><span class="tag">Профессиональная чистка</span></div></article>
+<article class="card doc" data-s="surg"><div class="doc__a">Н</div><div><h3>Нурлан Касымов</h3><p>Хирург-имплантолог, стаж 12 лет</p><span class="tag">Импланты</span></div></article>
+<article class="card doc" data-s="ortho"><div class="doc__a">М</div><div><h3>Мария Ким</h3><p>Ортодонт, стаж 8 лет</p><span class="tag">Брекеты и элайнеры</span></div></article>
+<article class="card doc" data-s="kid"><div class="doc__a">Д</div><div><h3>Диана Ахметова</h3><p>Детский стоматолог, стаж 7 лет</p><span class="tag">Без страха</span></div></article>
+<article class="card doc" data-s="hyg"><div class="doc__a">С</div><div><h3>Сауле Ибраева</h3><p>Гигиенист, стаж 4 года</p><span class="tag">Air Flow</span></div></article></div></section>
+
+<section class="sec"><div class="head"><p class="k">Как проходит приём</p><h2>Три простых шага</h2></div>
+<div class="tl"><div class="card"><div class="n">1</div><h3>Осмотр</h3><p class="mut">Врач слушает, осматривает и показывает снимок.</p></div><div class="card"><div class="n">2</div><h3>План и цена</h3><p class="mut">Вы знаете стоимость до начала лечения.</p></div><div class="card"><div class="n">3</div><h3>Лечение</h3><p class="mut">Без боли, с современной анестезией.</p></div></div></section>
+
+<section class="sec" id="zapis"><div class="bento"><div class="card s3"><p class="k">Запись</p><h2>Запишитесь на приём</h2><p class="mut">Выберите день, и администратор подтвердит время. Это демо, заявка никуда не уходит.</p>
+<details><summary>Больно ли лечить?</summary><p>Мы используем современную анестезию, поэтому лечение проходит без боли.</p></details>
+<details><summary>Сколько длится чистка?</summary><p>Около часа. Результат сохраняется до 6 месяцев.</p></details>
+<details><summary>Есть ли гарантия?</summary><p>Да, на лечение даём гарантию до 12 месяцев.</p></details></div>
+<form class="card s3 form" id="form" novalidate><div><span class="mut">День</span><div class="days" id="days"></div></div>
+<div class="two"><label>Время суток<select id="tm"><option>Утром</option><option>Днём</option><option>Вечером</option></select></label>
+<label>Врач<select id="dr"><option>Любой свободный</option><option>Ерлан Сабитов</option><option>Асем Нурланова (чистка)</option><option>Нурлан Касымов</option><option>Мария Ким</option><option>Диана Ахметова</option></select></label></div>
+<div class="two"><label>Имя<input type="text" id="nm" autocomplete="name" placeholder="Как к вам обращаться"></label><label>Телефон<input type="tel" id="ph" autocomplete="tel" placeholder="+7 ___ ___ __ __"></label></div>
+<label class="cons"><input type="checkbox" id="cn"><span>Согласен на обработку персональных данных</span></label>
+<button class="btn" type="submit">Записаться</button><p class="msg" id="msg" role="status"></p></form></div></section>
+</main>
+<footer class="ft"><span>© DENT+ — демо-сайт стоматологии · г. Алматы, ул. Примерная, 5 · Пн–Сб 9:00–20:00</span><span>Сделано в <a href="/">LIW</a></span></footer></div>
+</body></html>
