@@ -1,6 +1,6 @@
 // Демо-сайты для шаблонов. Цены, адреса и контакты условные (демонстрация).
 // Ниши, у которых есть полный многостраничный демо-сайт в public/demo/<id>/
-export const fullDemos = { auto: '/demo/auto/', barber: '/demo/barber/' };
+export const fullDemos = { auto: '/demo/auto/', barber: '/demo/barber/', beauty: '/demo/beauty/' };
 export const nicheOrder = ['barber', 'beauty', 'auto', 'dental', 'fitness', 'coffee', 'pc'];
 
 export const niches = {
